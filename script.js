@@ -1,20 +1,8 @@
 // ==================== SOUND EFFECTS ==================== 
 function playClickSound() {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.frequency.value = 800;
-    oscillator.type = 'square';
-    
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-    
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.1);
+    const audio = new Audio('https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/sounds/click.mp3');
+    audio.volume = 0.5;
+    audio.play().catch(e => console.log('Audio play failed:', e));
 }
 
 function playSuccessSound() {
@@ -344,6 +332,7 @@ const apks = [
 
 // ==================== PAGE NAVIGATION ====================
 function goToPage(pageId) {
+    playClickSound();
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     const target = document.getElementById(pageId);
     if (target) {
@@ -363,6 +352,7 @@ function goToPage(pageId) {
 }
 
 function goToHome() {
+    playClickSound();
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     document.getElementById('homePage').classList.add('active');
     window.scrollTo(0, 0);
@@ -546,7 +536,7 @@ function openNewsItem(itemId, type) {
         const card = document.getElementById(itemId);
         if (card) {
             card.scrollIntoView({ behavior: "smooth", block: "center" });
-            card.style.outline = "3px solid #ff9800";
+            card.style.outline = "3px solid #8BC34A";
             setTimeout(() => card.style.outline = "none", 3000);
         }
     }, 500);
@@ -584,6 +574,7 @@ function updatePagination(totalPages, type) {
 }
 
 function previousPage(type) {
+    playClickSound();
     if (type === 'addons' && currentPage > 1) {
         currentPage--;
         displayAddons();
@@ -595,6 +586,7 @@ function previousPage(type) {
 }
 
 function nextPage(type) {
+    playClickSound();
     const totalPages = Math.ceil(
         (type === 'addons' ? filteredAddons.length : filteredResources.length) / ITEMS_PER_PAGE
     );
@@ -610,6 +602,7 @@ function nextPage(type) {
 }
 
 function goToFirstPage(type) {
+    playClickSound();
     if (type === 'addons') {
         currentPage = 1;
         displayAddons();
@@ -621,6 +614,7 @@ function goToFirstPage(type) {
 }
 
 function goToLastPage(type) {
+    playClickSound();
     const totalPages = Math.ceil(
         (type === 'addons' ? filteredAddons.length : filteredResources.length) / ITEMS_PER_PAGE
     );
