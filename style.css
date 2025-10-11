@@ -150,6 +150,27 @@ body {
     padding: 40px 20px;
 }
 
+/* ==================== PAGE HEADER ==================== */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 40px;
+}
+
+.page-header h1 {
+    font-size: 3em;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    color: #a0aec0;
+    font-size: 1.2em;
+}
+
 /* ==================== PROFILE SECTION ==================== */
 .profile-section {
     text-align: center;
@@ -326,6 +347,7 @@ body {
     width: 100%;
     height: 180px;
     overflow: hidden;
+    background: rgba(102, 126, 234, 0.05);
 }
 
 .news-card-image img {
@@ -369,7 +391,107 @@ body {
     color: #a0aec0;
 }
 
-/* "See more" buttons */
+/* ==================== ADDONS/RESOURCE GRID ==================== */
+.addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.addon-card {
+    background: rgba(102, 126, 234, 0.1);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.addon-card:hover {
+    transform: translateY(-8px);
+    border-color: #667eea;
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+.addon-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.addon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.addon-card:hover .addon-image img {
+    transform: scale(1.1);
+}
+
+.addon-content {
+    padding: 20px;
+}
+
+.addon-content h3 {
+    color: #667eea;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.addon-content p {
+    color: #cbd5e0;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.addon-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.addon-tag {
+    background: rgba(102, 126, 234, 0.3);
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    color: #a0aec0;
+}
+
+.download-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    background: rgba(102, 126, 234, 0.8);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.addon-card:hover .download-icon {
+    background: #667eea;
+    transform: scale(1.1);
+}
+
+.no-results {
+    text-align: center;
+    color: #a0aec0;
+    font-size: 1.2em;
+    padding: 60px 20px;
+    grid-column: 1 / -1;
+}
+
+/* ==================== BUTTONS ==================== */
 .see-more-btn {
     background: linear-gradient(135deg, #667eea, #764ba2);
     border: none;
@@ -451,7 +573,9 @@ body {
     object-fit: cover;
 }
 
-.button-content { flex: 1; }
+.button-content { 
+    flex: 1; 
+}
 
 .button-content h3 {
     font-size: 1.5em;
@@ -656,7 +780,9 @@ body {
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
     .glitch { font-size: 2em; }
-    .button-grid, .news-grid, .footer-content { grid-template-columns: 1fr; }
+    .button-grid, .news-grid, .addons-grid, .footer-content { 
+        grid-template-columns: 1fr; 
+    }
     .page-header h1 { font-size: 2em; }
     .section-title { font-size: 2em; }
     .back-button { 
@@ -673,5 +799,7 @@ body {
         font-size: 1em; 
         padding: 15px 50px 15px 20px; 
     }
-    .security-container { padding: 30px 20px; }
+    .security-container { 
+        padding: 30px 20px; 
+    }
 }
