@@ -1,6 +1,6 @@
 // ==================== SOUND EFFECTS ==================== 
 function playClickSound() {
-    const audio = new Audio('https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPO_NAME/sounds/click.mp3');
+    const audio = new Audio('https://DcaptainPlays.github.io/MyLinkWebsite/sounds/click.mp3');
     audio.volume = 0.5;
     audio.play().catch(e => console.log('Audio play failed:', e));
 }
@@ -633,3 +633,4 @@ function goToLastPage(type) {
 window.addEventListener("DOMContentLoaded", function() {
     checkAccess();
 });
+
