@@ -2,36 +2,29 @@
 const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
 const validAuth = "dcaptain123";
 
-// Check if user is authenticated
-function isAuthenticated() {
-    return localStorage.getItem('auth_status') === 'verified';
-}
-
-// Set authentication status
-function setAuthenticated(status) {
-    if (status) {
-        localStorage.setItem('auth_status', 'verified');
-    } else {
-        localStorage.removeItem('auth_status');
-    }
-}
-
 function checkAccess() {
     const urlParams = new URLSearchParams(window.location.search);
     const auth = urlParams.get("auth");
 
-    // If already authenticated, grant access immediately
-    if (isAuthenticated()) {
-        grantAccess();
-        return;
-    }
-
-    // Check URL auth parameter
     if (auth === validAuth) {
-        setAuthenticated(true);
-        grantAccess();
+        document.getElementById("securityStatus").innerText = "Access granted ✅";
+        const container = document.querySelector('.security-container');
+        
+        // Add fade-out animation
+        container.classList.add('fade-out');
+        
+        setTimeout(() => {
+            document.getElementById("securityCheck").style.display = "none";
+            document.getElementById("mainContent").classList.remove("hidden");
+            document.getElementById("homePage").classList.add("active");
+            
+            // Initialize content
+            displayNewsAddons();
+            displayNewsResources();
+            displayNewsClients();
+            displayNewsApks();
+        }, 1500);
     } else {
-        // If not authenticated and no valid auth parameter, redirect to Linkvertise
         document.getElementById("securityStatus").innerText = "Redirecting to verification...";
         setTimeout(() => { 
             window.location.href = linkvertiseURL; 
@@ -39,36 +32,13 @@ function checkAccess() {
     }
 }
 
-function grantAccess() {
-    document.getElementById("securityStatus").innerText = "Access granted ✅";
-    const container = document.querySelector('.security-container');
-    
-    // Add fade-out animation
-    container.classList.add('fade-out');
-    
-    setTimeout(() => {
-        document.getElementById("securityCheck").style.display = "none";
-        document.getElementById("mainContent").classList.remove("hidden");
-        document.getElementById("homePage").classList.add("active");
-        // Clean URL without affecting authentication
-        history.replaceState(null, "", window.location.pathname);
-        
-        // Initialize content
-        displayNewsAddons();
-        displayNewsResources();
-        displayNewsClients();
-        displayNewsApks();
-    }, 1500);
-}
-
-// Clear authentication when user explicitly logs out
-function logout() {
-    setAuthenticated(false);
-    window.location.href = linkvertiseURL;
-}
-
 // Initialize security check when page loads
 window.addEventListener("DOMContentLoaded", checkAccess);
+
+// Prevent split-screen if opened inside Linkvertise frame
+if (window.top !== window.self) {
+    window.top.location = window.location.href;
+}
 
 // ==================== DATA ====================
 const allAddons = [
