@@ -1,50 +1,21 @@
-// --- Token-based protection for GitHub Pages ---
-const LINKVERTISE_URL = "https://direct-link.net/1408907/WATKrEzRckyO";
-const VALID_TOKEN = "dcaptain123"; // change this to your own secret if you like
-const ALLOW_LOCAL_DEBUG = true;
+const urlParams = new URLSearchParams(window.location.search);
+const auth = urlParams.get("auth");
 
-(function () {
-  function getAuthToken() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("auth");
-  }
+const targetOrigin = "https://billowing-wave-75de.josephcasasolareal.workers.dev";
 
-  function cleanUrl() {
-    if (window.location.search.includes("auth=")) {
-      window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
-    }
-  }
-
-  function showProtectedContent() {
-    document.getElementById("status").textContent = "Access granted.";
-    document.getElementById("content").classList.remove("hidden");
-    cleanUrl();
-  }
-
-  function redirectToLinkvertise() {
-    window.location.replace(LINKVERTISE_URL);
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const auth = getAuthToken();
-
-    // Allow testing locally
-    if (ALLOW_LOCAL_DEBUG && (location.protocol === "file:" || location.hostname === "localhost")) {
-      if (auth === VALID_TOKEN) {
-        showProtectedContent();
-        return;
-      }
-      document.getElementById("status").textContent =
-        "Local debug: add ?auth=" + VALID_TOKEN + " to the URL to simulate Linkvertise.";
-      return;
-    }
-
-    // Main GitHub Pages behavior
-    if (auth === VALID_TOKEN) {
-      showProtectedContent();
-      return;
-    }
-
-    redirectToLinkvertise();
-  });
-})();
+if (auth !== "dcaptain123") {
+  // Kung walang tamang auth, balik sa Linkvertise
+  window.location.href = "https://link-hub.net/1408907/57D6CaRirKtJ";
+} else {
+  // Kung tama, ipakita laman ng proxied site (galing sa worker)
+  document.getElementById("status").innerText = "Access granted ✅";
+  document.getElementById("content").classList.remove("hidden");
+  
+  // Optional: kung gusto mong i-load yung laman ng worker sa iframe
+  const iframe = document.createElement("iframe");
+  iframe.src = targetOrigin;
+  iframe.style.width = "100%";
+  iframe.style.height = "80vh";
+  iframe.style.border = "none";
+  document.body.appendChild(iframe);
+}
