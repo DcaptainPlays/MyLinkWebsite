@@ -3,38 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Website - Multi File</title>
+    <title>DcaptainPlays - Minecraft Addons</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1 class="title">Hello Baby! 💕</h1>
-            <p class="subtitle">This is a multi-file test website</p>
-            
-            <div class="card">
-                <h2>Welcome!</h2>
-                <p>This website uses 3 separate files:</p>
-                <ul>
-                    <li>index.html (structure)</li>
-                    <li>style.css (styling)</li>
-                    <li>script.js (functionality)</li>
-                </ul>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+    </div>
+
+    <!-- Main Home Page -->
+    <div id="homePage" class="page active">
+        <div class="container">
+            <div class="profile-section">
+                <div class="profile-pic">
+                    <img src="https://i.imgur.com/PK4AHoX.jpeg" alt="DcaptainPlays Profile">
+                </div>
+                <h1 class="glitch" data-text="DcaptainPlays">DcaptainPlays</h1>
+                <p class="subtitle">Minecraft Content Creator & Addon Developer</p>
+                <div class="social-links">
+                    <span class="tag">Creator</span>
+                    <span class="tag">Developer</span>
+                    <span class="tag">Gamer</span>
+                </div>
             </div>
 
-            <button class="btn" onclick="showMessage()">Click Me Baby!</button>
-            
-            <div id="message" class="message hidden">
-                <h3>Surprise! 🎉</h3>
-                <p>The button works! JavaScript is loaded correctly.</p>
+            <div class="button-grid">
+                <a href="https://youtube.com/@dcaptainplays?si=8te4HfC6JKYSPgQy" target="_blank" class="main-button youtube-btn">
+                    <div class="button-icon"></div>
+                    <div class="button-content">
+                        <h3>YouTube Channel</h3>
+                        <p>Watch my latest videos</p>
+                    </div>
+                    <div class="button-arrow"></div>
+                </a>
+
+                <div class="main-button addons-btn" onclick="goToAddons()">
+                    <div class="button-icon"></div>
+                    <div class="button-content">
+                        <h3>Minecraft Addons</h3>
+                        <p>Download custom addons</p>
+                    </div>
+                    <div class="button-arrow"></div>
+                </div>
             </div>
 
-            <div class="counter">
-                <h3>Interactive Counter</h3>
-                <p>Count: <span id="count">0</span></p>
-                <button class="btn-small" onclick="increaseCount()">+1</button>
-                <button class="btn-small" onclick="decreaseCount()">-1</button>
-                <button class="btn-small" onclick="resetCount()">Reset</button>
+            <div class="about-section">
+                <h2>About Me</h2>
+                <p>Welcome! I'm DcaptainPlays, a passionate Minecraft content creator and addon developer. I create unique addons and share my gameplay experiences on YouTube. Check out my channel for tutorials, gameplay, and addon showcases!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Addons Page -->
+    <div id="addonsPage" class="page">
+        <button class="back-button" onclick="goToHome()">
+            <span class="arrow-left"></span> Back
+        </button>
+
+        <div class="container">
+            <div class="page-header">
+                <h1>Minecraft Addons</h1>
+                <p>Choose your favorite addon to download</p>
+            </div>
+
+            <div class="addons-grid">
+                <!-- Addon Card 1 -->
+                <div class="addon-card" onclick="window.open('ADDON_1_DOWNLOAD_LINK', '_blank')">
+                    <div class="addon-image">
+                        <img src="https://via.placeholder.com/300x200/4CAF50/ffffff?text=Addon+1" alt="Addon 1">
+                    </div>
+                    <div class="addon-content">
+                        <h3>Epic Weapons Addon</h3>
+                        <p>Add powerful weapons to your Minecraft world</p>
+                        <div class="addon-tags">
+                            <span class="addon-tag">Weapons</span>
+                            <span class="addon-tag">PvP</span>
+                        </div>
+                    </div>
+                    <div class="download-icon"></div>
+                </div>
+
+                <!-- Addon Card 2 -->
+                <div class="addon-card" onclick="window.open('ADDON_2_DOWNLOAD_LINK', '_blank')">
+                    <div class="addon-image">
+                        <img src="https://via.placeholder.com/300x200/2196F3/ffffff?text=Addon+2" alt="Addon 2">
+                    </div>
+                    <div class="addon-content">
+                        <h3>Custom Mobs Pack</h3>
+                        <p>New challenging mobs and bosses</p>
+                        <div class="addon-tags">
+                            <span class="addon-tag">Mobs</span>
+                            <span class="addon-tag">Boss</span>
+                        </div>
+                    </div>
+                    <div class="download-icon"></div>
+                </div>
+
+                <!-- Addon Card 3 -->
+                <div class="addon-card" onclick="window.open('ADDON_3_DOWNLOAD_LINK', '_blank')">
+                    <div class="addon-image">
+                        <img src="https://via.placeholder.com/300x200/FF5722/ffffff?text=Addon+3" alt="Addon 3">
+                    </div>
+                    <div class="addon-content">
+                        <h3>Advanced Tools Mod</h3>
+                        <p>Enhanced tools with special abilities</p>
+                        <div class="addon-tags">
+                            <span class="addon-tag">Tools</span>
+                            <span class="addon-tag">Mining</span>
+                        </div>
+                    </div>
+                    <div class="download-icon"></div>
+                </div>
+
+                <!-- Addon Card 4 -->
+                <div class="addon-card" onclick="window.open('ADDON_4_DOWNLOAD_LINK', '_blank')">
+                    <div class="addon-image">
+                        <img src="https://via.placeholder.com/300x200/9C27B0/ffffff?text=Addon+4" alt="Addon 4">
+                    </div>
+                    <div class="addon-content">
+                        <h3>Furniture Plus</h3>
+                        <p>Decorate your builds with furniture</p>
+                        <div class="addon-tags">
+                            <span class="addon-tag">Decoration</span>
+                            <span class="addon-tag">Building</span>
+                        </div>
+                    </div>
+                    <div class="download-icon"></div>
+                </div>
+
+                <!-- Addon Card 5 -->
+                <div class="addon-card" onclick="window.open('ADDON_5_DOWNLOAD_LINK', '_blank')">
+                    <div class="addon-image">
+                        <img src="https://via.placeholder.com/300x200/FF9800/ffffff?text=Addon+5" alt="Addon 5">
+                    </div>
+                    <div class="addon-content">
+                        <h3>Magic & Spells</h3>
+                        <p>Cast powerful spells and enchantments</p>
+                        <div class="addon-tags">
+                            <span class="addon-tag">Magic</span>
+                            <span class="addon-tag">Fantasy</span>
+                        </div>
+                    </div>
+                    <div class="download-icon"></div>
+                </div>
+
+                <!-- Addon Card 6 -->
+                <div class="addon-card" onclick="window.open('ADDON_6_DOWNLOAD_LINK', '_blank')">
+                    <div class="addon-image">
+                        <img src="https://via.placeholder.com/300x200/00BCD4/ffffff?text=Addon+6" alt="Addon 6">
+                    </div>
+                    <div class="addon-content">
+                        <h3>Survival Plus</h3>
+                        <p>Enhanced survival experience</p>
+                        <div class="addon-tags">
+                            <span class="addon-tag">Survival</span>
+                            <span class="addon-tag">Hardcore</span>
+                        </div>
+                    </div>
+                    <div class="download-icon"></div>
+                </div>
             </div>
         </div>
     </div>
