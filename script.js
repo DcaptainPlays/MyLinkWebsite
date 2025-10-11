@@ -1,4 +1,4 @@
-// ==================== SECURITY CHECK ====================
+// ==================== SECURITY CHECK ==================== 
 const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
 const validAuth = "dcaptain123";
 
@@ -9,10 +9,10 @@ function isAuthenticated() {
     
     if (!authStatus || !authTimestamp) return false;
     
-    // Authentication expires after 1 second (to force redirect on refresh)
+    // Authentication expires after 10 minutes (instead of 1 second)
     const now = new Date().getTime();
     const timePassed = now - parseInt(authTimestamp);
-    if (timePassed > 1000) { // 1 second expiration
+    if (timePassed > 600000) { // 10 min expiration
         localStorage.removeItem('auth_status');
         localStorage.removeItem('auth_timestamp');
         return false;
@@ -41,10 +41,8 @@ function checkAccess() {
         setAuthenticated(true);
         grantAccess();
     } else if (isAuthenticated()) {
-        // Only grant access if authentication hasn't expired
         grantAccess();
     } else {
-        // Redirect to Linkvertise if not authenticated
         document.getElementById("securityStatus").innerText = "Redirecting to verification...";
         setTimeout(() => { 
             window.location.href = linkvertiseURL; 
@@ -56,13 +54,13 @@ function grantAccess() {
     document.getElementById("securityStatus").innerText = "Access granted ✅";
     const container = document.querySelector('.security-container');
     
-    // Add fade-out animation
     container.classList.add('fade-out');
     
     setTimeout(() => {
         document.getElementById("securityCheck").style.display = "none";
         document.getElementById("mainContent").classList.remove("hidden");
         document.getElementById("homePage").classList.add("active");
+
         // Clean URL without affecting authentication
         history.replaceState(null, "", window.location.pathname);
         
@@ -71,7 +69,7 @@ function grantAccess() {
         displayNewsResources();
         displayNewsClients();
         displayNewsApks();
-    }, 1500);
+    }, 1200);
 }
 
 // Clear authentication when user explicitly logs out
@@ -80,23 +78,22 @@ function logout() {
     window.location.href = linkvertiseURL;
 }
 
-// Add event listeners for page visibility and focus changes
+// Check access only once on load (remove unnecessary repeat checks)
+// but revalidate when page/tab gains focus — not excessively.
 document.addEventListener("visibilitychange", function() {
-    if (!document.hidden) {
-        // Page becomes visible again (tab focus)
+    if (!document.hidden && !isAuthenticated()) {
         checkAccess();
     }
 });
 
 window.addEventListener("focus", function() {
-    // Window regains focus
-    checkAccess();
+    if (!isAuthenticated()) checkAccess();
 });
 
-// Clear authentication on page refresh/reload
-window.addEventListener('beforeunload', function() {
-    setAuthenticated(false);
-});
+// Do not clear auth on reload — comment out to preserve session
+// window.addEventListener('beforeunload', function() {
+//     setAuthenticated(false);
+// });
 
 // Initialize security check when page loads
 window.addEventListener("DOMContentLoaded", checkAccess);
@@ -104,6 +101,7 @@ window.addEventListener("DOMContentLoaded", checkAccess);
 // ==================== DATA ====================
 const allAddons = [
     {
+        id: "snake-addon-pack",
         name: "Snake Addon Pack",
         description: "Adds realistic snakes with animations and AI behavior.",
         image: "https://i.imgur.com/YHoAhki.png",
@@ -111,6 +109,7 @@ const allAddons = [
         downloadLink: "#"
     },
     {
+        id: "epic-weapons",
         name: "Epic Weapons Arsenal",
         description: "Powerful weapons with custom models.",
         image: "https://i.imgur.com/q0kFxLH.jpeg",
@@ -118,6 +117,7 @@ const allAddons = [
         downloadLink: "#"
     },
     {
+        id: "dragon-mount-plus",
         name: "Dragon Mount Plus",
         description: "Ride dragons with custom animations and abilities.",
         image: "https://i.imgur.com/SBU16HK.jpeg",
@@ -125,6 +125,7 @@ const allAddons = [
         downloadLink: "#"
     },
     {
+        id: "enhanced-tools",
         name: "Enhanced Tools Pack",
         description: "Better tools with special abilities.",
         image: "https://i.imgur.com/VniYVtv.png",
@@ -132,6 +133,7 @@ const allAddons = [
         downloadLink: "#"
     },
     {
+        id: "hacked-client-x",
         name: "Hacked Client X",
         description: "Advanced features for experienced players.",
         image: "https://i.imgur.com/7wpie0Y.jpeg",
@@ -142,6 +144,7 @@ const allAddons = [
 
 const allResources = [
     {
+        id: "hd-textures",
         name: "HD Textures Pack",
         description: "High-definition textures for a better look.",
         image: "https://i.imgur.com/SBU16HK.jpeg",
@@ -149,6 +152,7 @@ const allResources = [
         downloadLink: "#"
     },
     {
+        id: "pvp-pack",
         name: "PvP Resource Pack",
         description: "Optimized textures for PvP gameplay.",
         image: "https://i.imgur.com/q0kFxLH.jpeg",
@@ -156,6 +160,7 @@ const allResources = [
         downloadLink: "#"
     },
     {
+        id: "fantasy-theme",
         name: "Fantasy Theme Pack",
         description: "Medieval fantasy themed textures.",
         image: "https://i.imgur.com/YHoAhki.png",
@@ -166,6 +171,7 @@ const allResources = [
 
 const hackClients = [
     {
+        id: "toolbox-pro",
         name: "Toolbox Pro",
         description: "Advanced Minecraft client with many features.",
         image: "https://i.imgur.com/7wpie0Y.jpeg",
@@ -173,6 +179,7 @@ const hackClients = [
         downloadLink: "#"
     },
     {
+        id: "hacked-client-x",
         name: "Hacked Client X",
         description: "Feature-rich client for advanced users.",
         image: "https://i.imgur.com/OlYW3ka.png",
@@ -180,6 +187,7 @@ const hackClients = [
         downloadLink: "#"
     },
     {
+        id: "mod-menu-plus",
         name: "Mod Menu Plus",
         description: "Extensive mod menu with custom features.",
         image: "https://i.imgur.com/OlYW3ka.png",
@@ -190,6 +198,7 @@ const hackClients = [
 
 const apks = [
     {
+        id: "minecraft-v121",
         name: "Minecraft v1.21",
         description: "Latest stable build with new features.",
         image: "https://i.imgur.com/MboC4Fc.png",
@@ -197,6 +206,7 @@ const apks = [
         downloadLink: "#"
     },
     {
+        id: "mc-modded",
         name: "Minecraft Modded",
         description: "Performance optimized version.",
         image: "https://i.imgur.com/MboC4Fc.png",
@@ -296,11 +306,12 @@ function displayResources() {
     updatePagination(totalPages, 'resources');
 }
 
+// News display functions
 function displayNewsAddons() {
     const grid = document.getElementById('newAddonsGrid');
     grid.innerHTML = '';
     allAddons.slice(0, 3).forEach(addon => {
-        grid.appendChild(createNewsCard(addon));
+        grid.appendChild(createNewsCard(addon, 'addon'));
     });
 }
 
@@ -308,30 +319,31 @@ function displayNewsResources() {
     const grid = document.getElementById('newResourcesGrid');
     grid.innerHTML = '';
     allResources.slice(0, 3).forEach(resource => {
-        grid.appendChild(createNewsCard(resource));
+        grid.appendChild(createNewsCard(resource, 'resource'));
     });
 }
 
 function displayNewsClients() {
     const grid = document.getElementById('newClientsGrid');
     grid.innerHTML = '';
-    for (let i = 0; i < Math.min(3, hackClients.length); i++) {
-        grid.appendChild(createNewsCard(hackClients[i]));
-    }
+    hackClients.slice(0, 3).forEach(client => {
+        grid.appendChild(createNewsCard(client, 'client'));
+    });
 }
 
 function displayNewsApks() {
     const grid = document.getElementById('newApksGrid');
     grid.innerHTML = '';
-    for (let i = 0; i < Math.min(3, apks.length); i++) {
-        grid.appendChild(createNewsCard(apks[i]));
-    }
+    apks.slice(0, 3).forEach(apk => {
+        grid.appendChild(createNewsCard(apk, 'apk'));
+    });
 }
 
 // ==================== CARD CREATION ====================
 function createCard(item) {
     const card = document.createElement('div');
     card.className = 'addon-card';
+    card.id = item.id;
     card.onclick = () => window.open(item.downloadLink, '_blank');
     
     card.innerHTML = `
@@ -351,10 +363,10 @@ function createCard(item) {
     return card;
 }
 
-function createNewsCard(item) {
+function createNewsCard(item, type) {
     const card = document.createElement('div');
     card.className = 'news-card';
-    card.onclick = () => window.open(item.downloadLink, '_blank');
+    card.onclick = () => openNewsItem(item.id, type);
     
     card.innerHTML = `
         <div class="news-card-image">
@@ -370,6 +382,27 @@ function createNewsCard(item) {
     `;
     
     return card;
+}
+
+// ==================== OPEN NEWS ITEM ====================
+function openNewsItem(itemId, type) {
+    let pageId = '';
+    switch (type) {
+        case 'addon': pageId = 'addonsPage'; break;
+        case 'resource': pageId = 'resourcePage'; break;
+        case 'client': pageId = 'hackClientPage'; break;
+        case 'apk': pageId = 'apkPage'; break;
+    }
+
+    goToPage(pageId);
+    setTimeout(() => {
+        const card = document.getElementById(itemId);
+        if (card) {
+            card.scrollIntoView({ behavior: "smooth", block: "center" });
+            card.style.outline = "3px solid #667eea";
+            setTimeout(() => card.style.outline = "none", 3000);
+        }
+    }, 500);
 }
 
 // ==================== PAGINATION ====================
@@ -457,8 +490,4 @@ function goToLastPage(type) {
 // Initialize everything when the page loads
 window.addEventListener("DOMContentLoaded", function() {
     checkAccess();
-    displayNewsAddons();
-    displayNewsResources();
-    displayNewsClients();
-    displayNewsApks();
 });
