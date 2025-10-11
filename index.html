@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 
   <script>
-    // Prevent being loaded inside an iframe (Linkvertise split screen)
+    // Prevent split-screen if opened inside Linkvertise frame
     if (window.top !== window.self) {
       window.top.location = window.location.href;
     }
@@ -26,26 +26,27 @@
   </main>
 
   <script>
+    const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
+    const validAuth = "dcaptain123";
+
     const urlParams = new URLSearchParams(window.location.search);
     const auth = urlParams.get("auth");
 
-    const targetOrigin = "https://mylinkwebsite.pages.dev/?auth=dcaptain123";
+    const sessionKey = "dcaptain_access_granted";
 
-    if (auth !== "dcaptain123") {
-      // Redirect to Linkvertise if access is invalid
-      window.location.href = "https://link-hub.net/1408907/57D6CaRirKtJ";
-    } else {
-      // If correct, show content
+    if (sessionStorage.getItem(sessionKey) === "true") {
+      // Already unlocked in this session
       document.getElementById("status").innerText = "Access granted ✅";
       document.getElementById("content").classList.remove("hidden");
-
-      // Optional: Load worker page if you still want to show content from the proxy
-      // const iframe = document.createElement("iframe");
-      // iframe.src = targetOrigin;
-      // iframe.style.width = "100%";
-      // iframe.style.height = "80vh";
-      // iframe.style.border = "none";
-      // document.body.appendChild(iframe);
+    } else if (auth === validAuth) {
+      // First-time access with the correct key
+      sessionStorage.setItem(sessionKey, "true");
+      history.replaceState(null, "", window.location.pathname); // remove ?auth= from URL
+      document.getElementById("status").innerText = "Access granted ✅";
+      document.getElementById("content").classList.remove("hidden");
+    } else {
+      // No valid session or key -> back to Linkvertise
+      window.location.href = linkvertiseURL;
     }
   </script>
 </body>
