@@ -25,29 +25,6 @@
     </div>
   </main>
 
-  <script>
-    const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
-    const validAuth = "dcaptain123";
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const auth = urlParams.get("auth");
-
-    const sessionKey = "dcaptain_access_granted";
-
-    if (sessionStorage.getItem(sessionKey) === "true") {
-      // Already unlocked in this session
-      document.getElementById("status").innerText = "Access granted ✅";
-      document.getElementById("content").classList.remove("hidden");
-    } else if (auth === validAuth) {
-      // First-time access with the correct key
-      sessionStorage.setItem(sessionKey, "true");
-      history.replaceState(null, "", window.location.pathname); // remove ?auth= from URL
-      document.getElementById("status").innerText = "Access granted ✅";
-      document.getElementById("content").classList.remove("hidden");
-    } else {
-      // No valid session or key -> back to Linkvertise
-      window.location.href = linkvertiseURL;
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
