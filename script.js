@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const auth = urlParams.get("auth");
 
-const targetOrigin = "https://billowing-wave-75de.josephcasasolareal.workers.dev";
+const targetOrigin = "https://mylinkwebsite.pages.dev/?auth=dcaptain123";
 
 if (auth !== "dcaptain123") {
   // Kung walang tamang auth, balik sa Linkvertise
@@ -19,3 +19,4 @@ if (auth !== "dcaptain123") {
   iframe.style.border = "none";
   document.body.appendChild(iframe);
 }
+
