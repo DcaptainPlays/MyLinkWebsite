@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Website - Multi File</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1 class="title">Hello Baby! 💕</h1>
+            <p class="subtitle">This is a multi-file test website</p>
+            
+            <div class="card">
+                <h2>Welcome!</h2>
+                <p>This website uses 3 separate files:</p>
+                <ul>
+                    <li>index.html (structure)</li>
+                    <li>style.css (styling)</li>
+                    <li>script.js (functionality)</li>
+                </ul>
+            </div>
+
+            <button class="btn" onclick="showMessage()">Click Me Baby!</button>
+            
+            <div id="message" class="message hidden">
+                <h3>Surprise! 🎉</h3>
+                <p>The button works! JavaScript is loaded correctly.</p>
+            </div>
+
+            <div class="counter">
+                <h3>Interactive Counter</h3>
+                <p>Count: <span id="count">0</span></p>
+                <button class="btn-small" onclick="increaseCount()">+1</button>
+                <button class="btn-small" onclick="decreaseCount()">-1</button>
+                <button class="btn-small" onclick="resetCount()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
