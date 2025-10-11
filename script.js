@@ -2,36 +2,69 @@
 const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
 const validAuth = "dcaptain123";
 
+// Check if user is authenticated
+function isAuthenticated() {
+    return localStorage.getItem('auth_status') === 'verified';
+}
+
+// Set authentication status
+function setAuthenticated(status) {
+    if (status) {
+        localStorage.setItem('auth_status', 'verified');
+    } else {
+        localStorage.removeItem('auth_status');
+    }
+}
+
 function checkAccess() {
     const urlParams = new URLSearchParams(window.location.search);
     const auth = urlParams.get("auth");
 
-    if (auth === validAuth) {
-        document.getElementById("securityStatus").innerText = "Access granted ✅";
-        const container = document.querySelector('.security-container');
-        
-        // Add fade-out animation
-        container.classList.add('fade-out');
-        
-        setTimeout(() => {
-            document.getElementById("securityCheck").style.display = "none";
-            document.getElementById("mainContent").classList.remove("hidden");
-            document.getElementById("homePage").classList.add("active");
-            history.replaceState(null, "", window.location.pathname);
-            
-            // Initialize content
-            displayNewsAddons();
-            displayNewsResources();
-            displayNewsClients();
-            displayNewsApks();
-        }, 1500);
-
-        // Clear session when user leaves
-        window.addEventListener("beforeunload", () => sessionStorage.clear());
-    } else {
-        document.getElementById("securityStatus").innerText = "Redirecting to verification...";
-        setTimeout(() => { window.location.href = linkvertiseURL; }, 2000);
+    // If already authenticated, grant access immediately
+    if (isAuthenticated()) {
+        grantAccess();
+        return;
     }
+
+    // Check URL auth parameter
+    if (auth === validAuth) {
+        setAuthenticated(true);
+        grantAccess();
+    } else {
+        // If not authenticated and no valid auth parameter, redirect to Linkvertise
+        document.getElementById("securityStatus").innerText = "Redirecting to verification...";
+        setTimeout(() => { 
+            window.location.href = linkvertiseURL; 
+        }, 2000);
+    }
+}
+
+function grantAccess() {
+    document.getElementById("securityStatus").innerText = "Access granted ✅";
+    const container = document.querySelector('.security-container');
+    
+    // Add fade-out animation
+    container.classList.add('fade-out');
+    
+    setTimeout(() => {
+        document.getElementById("securityCheck").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+        document.getElementById("homePage").classList.add("active");
+        // Clean URL without affecting authentication
+        history.replaceState(null, "", window.location.pathname);
+        
+        // Initialize content
+        displayNewsAddons();
+        displayNewsResources();
+        displayNewsClients();
+        displayNewsApks();
+    }, 1500);
+}
+
+// Clear authentication when user explicitly logs out
+function logout() {
+    setAuthenticated(false);
+    window.location.href = linkvertiseURL;
 }
 
 // Initialize security check when page loads
@@ -57,40 +90,13 @@ const allAddons = [
         name: "Dragon Mount Plus",
         description: "Ride dragons with custom animations and abilities.",
         image: "https://i.imgur.com/SBU16HK.jpeg",
-        tags: ["Mounts", "Fantasy"],
-        downloadLink: "#"
-    }
-];
-
-const allResources = [
-    {
-        name: "HD Textures Pack",
-        description: "High-resolution blocks and item visuals.",
-        image: "https://i.imgur.com/YHoAhki.png",
-        tags: ["HD", "Visuals"],
+        tags: ["Mounts", "Animation"],
         downloadLink: "#"
     },
     {
-        name: "Realistic Shaders",
-        description: "Realistic lighting and shadows.",
-        image: "https://i.imgur.com/q0kFxLH.jpeg",
-        tags: ["Shaders"],
-        downloadLink: "#"
-    },
-    {
-        name: "Modern UI Pack",
-        description: "Sleek and modern user interface overhaul.",
-        image: "https://i.imgur.com/SBU16HK.jpeg",
-        tags: ["UI", "Interface"],
-        downloadLink: "#"
-    }
-];
-
-const hackClients = [
-    {
-        name: "Toolbox Pro",
-        description: "Feature-rich client with advanced tools.",
-        image: "https://i.imgur.com/OlYW3ka.png",
+        name: "Enhanced Tools Pack",
+        description: "Better tools with special abilities.",
+        image: "https://i.imgur.com/VniYVtv.png",
         tags: ["Tools"],
         downloadLink: "#"
     },
@@ -230,17 +236,17 @@ function displayNewsResources() {
 function displayNewsClients() {
     const grid = document.getElementById('newClientsGrid');
     grid.innerHTML = '';
-    hackClients.slice(0, 3).forEach(client => {
-        grid.appendChild(createNewsCard(client));
-    });
+    for (let i = 0; i < Math.min(3, hackClients.length); i++) {
+        grid.appendChild(createNewsCard(hackClients[i]));
+    }
 }
 
 function displayNewsApks() {
     const grid = document.getElementById('newApksGrid');
     grid.innerHTML = '';
-    apks.slice(0, 3).forEach(apk => {
-        grid.appendChild(createNewsCard(apk));
-    });
+    for (let i = 0; i < Math.min(3, apks.length); i++) {
+        grid.appendChild(createNewsCard(apks[i]));
+    }
 }
 
 // ==================== CARD CREATION ====================
@@ -367,128 +373,4 @@ function goToLastPage(type) {
         displayResources();
     }
     window.scrollTo(0, 0);
-}}
-
-function displayNewsClients() {
-    const grid = document.getElementById('newClientsGrid');
-    grid.innerHTML = '';
-    for (let i = 0; i < Math.min(3, hackClients.length); i++) {
-        grid.appendChild(createNewsCard(hackClients[i]));
-    }
 }
-
-function displayNewsApks() {
-    const grid = document.getElementById('newApksGrid');
-    grid.innerHTML = '';
-    for (let i = 0; i < Math.min(3, apks.length); i++) {
-        grid.appendChild(createNewsCard(apks[i]));
-    }
-}
-
-// ==================== CREATE CARDS ====================
-function createAddonCard(addon) {
-    const card = document.createElement('div');
-    card.className = 'addon-card';
-    card.onclick = () => window.open(addon.downloadLink, '_blank');
-    card.innerHTML = `
-        <div class="addon-image"><img src="${addon.image}" alt="${addon.name}"></div>
-        <div class="addon-content">
-            <h3>${addon.name}</h3>
-            <p>${addon.description}</p>
-            <div class="addon-tags">${addon.tags.map(tag => `<span class="addon-tag">${tag}</span>`).join('')}</div>
-        </div>
-        <div class="download-icon">⬇️</div>`;
-    return card;
-}
-
-function createNewsCard(item) {
-    const card = document.createElement('div');
-    card.className = 'news-card';
-    card.onclick = () => window.open(item.downloadLink, '_blank');
-    card.innerHTML = `
-        <div class="news-card-image"><img src="${item.image}" alt="${item.name}"></div>
-        <div class="news-card-content">
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <div class="news-card-tags">${item.tags.map(tag => `<span class="news-card-tag">${tag}</span>`).join('')}</div>
-        </div>`;
-    return card;
-}
-
-// ==================== PAGINATION ====================
-function updatePagination(totalPages, type) {
-    const isAddon = type === 'addons';
-    const current = isAddon ? currentPage : resourcePageNum;
-    const pageContainer = document.getElementById(isAddon ? 'pageNumbers' : 'resourcePageNumbers');
-    const currentDisplay = document.getElementById(isAddon ? 'currentPageDisplay' : 'resourceCurrentDisplay');
-    const totalDisplay = document.getElementById(isAddon ? 'totalPagesDisplay' : 'resourceTotalDisplay');
-    currentDisplay.textContent = current;
-    totalDisplay.textContent = totalPages;
-    pageContainer.innerHTML = '';
-    for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement('button');
-        btn.className = 'page-btn' + (i === current ? ' active' : '');
-        btn.textContent = i;
-        btn.onclick = () => {
-            if (isAddon) { currentPage = i; displayAddons(); }
-            else { resourcePageNum = i; displayResources(); }
-            window.scrollTo(0, 0);
-        };
-        pageContainer.appendChild(btn);
-    }
-}
-
-function previousPage(type) {
-    if (type === 'addons' && currentPage > 1) {
-        currentPage--;
-        displayAddons();
-        window.scrollTo(0, 0);
-    } else if (type === 'resources' && resourcePageNum > 1) {
-        resourcePageNum--;
-        displayResources();
-        window.scrollTo(0, 0);
-    }
-}
-
-function nextPage(type) {
-    if (type === 'addons') {
-        const totalPages = Math.ceil(filteredAddons.length / ADDONS_PER_PAGE);
-        if (currentPage < totalPages) {
-            currentPage++;
-            displayAddons();
-            window.scrollTo(0, 0);
-        }
-    } else {
-        const totalPages = Math.ceil(filteredResources.length / RESOURCES_PER_PAGE);
-        if (resourcePageNum < totalPages) {
-            resourcePageNum++;
-            displayResources();
-            window.scrollTo(0, 0);
-        }
-    }
-}
-
-function goToFirstPage(type) {
-    if (type === 'addons') {
-        currentPage = 1;
-        displayAddons();
-    } else {
-        resourcePageNum = 1;
-        displayResources();
-    }
-    window.scrollTo(0, 0);
-}
-
-function goToLastPage(type) {
-    if (type === 'addons') {
-        const totalPages = Math.ceil(filteredAddons.length / ADDONS_PER_PAGE);
-        currentPage = totalPages;
-        displayAddons();
-    } else {
-        const totalPages = Math.ceil(filteredResources.length / RESOURCES_PER_PAGE);
-        resourcePageNum = totalPages;
-        displayResources();
-    }
-    window.scrollTo(0, 0);
-}
-
