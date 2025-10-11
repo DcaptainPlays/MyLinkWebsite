@@ -8,17 +8,25 @@ function checkAccess() {
 
     if (auth === validAuth) {
         document.getElementById("securityStatus").innerText = "Access granted ✅";
+        const container = document.querySelector('.security-container');
+        
+        // Add fade-out animation
+        container.classList.add('fade-out');
         
         setTimeout(() => {
-            document.getElementById("securityPage").classList.remove("active");
+            document.getElementById("securityCheck").style.display = "none";
+            document.getElementById("mainContent").classList.remove("hidden");
             document.getElementById("homePage").classList.add("active");
             history.replaceState(null, "", window.location.pathname);
+            
+            // Initialize content
             displayNewsAddons();
             displayNewsResources();
             displayNewsClients();
             displayNewsApks();
         }, 1500);
 
+        // Clear session when user leaves
         window.addEventListener("beforeunload", () => sessionStorage.clear());
     } else {
         document.getElementById("securityStatus").innerText = "Redirecting to verification...";
@@ -26,7 +34,91 @@ function checkAccess() {
     }
 }
 
+// Initialize security check when page loads
 window.addEventListener("DOMContentLoaded", checkAccess);
+
+// ==================== DATA ====================
+const allAddons = [
+    {
+        name: "Snake Addon Pack",
+        description: "Adds realistic snakes with animations and AI behavior.",
+        image: "https://i.imgur.com/YHoAhki.png",
+        tags: ["Animals", "Mobs"],
+        downloadLink: "#"
+    },
+    {
+        name: "Epic Weapons Arsenal",
+        description: "Powerful weapons with custom models.",
+        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        tags: ["Weapons", "PvP"],
+        downloadLink: "#"
+    },
+    {
+        name: "Dragon Mount Plus",
+        description: "Ride dragons with custom animations and abilities.",
+        image: "https://i.imgur.com/SBU16HK.jpeg",
+        tags: ["Mounts", "Fantasy"],
+        downloadLink: "#"
+    }
+];
+
+const allResources = [
+    {
+        name: "HD Textures Pack",
+        description: "High-resolution blocks and item visuals.",
+        image: "https://i.imgur.com/YHoAhki.png",
+        tags: ["HD", "Visuals"],
+        downloadLink: "#"
+    },
+    {
+        name: "Realistic Shaders",
+        description: "Realistic lighting and shadows.",
+        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        tags: ["Shaders"],
+        downloadLink: "#"
+    },
+    {
+        name: "Modern UI Pack",
+        description: "Sleek and modern user interface overhaul.",
+        image: "https://i.imgur.com/SBU16HK.jpeg",
+        tags: ["UI", "Interface"],
+        downloadLink: "#"
+    }
+];
+
+const hackClients = [
+    {
+        name: "Toolbox Pro",
+        description: "Feature-rich client with advanced tools.",
+        image: "https://i.imgur.com/OlYW3ka.png",
+        tags: ["Tools"],
+        downloadLink: "#"
+    },
+    {
+        name: "Hacked Client X",
+        description: "Advanced features for experienced players.",
+        image: "https://i.imgur.com/7wpie0Y.jpeg",
+        tags: ["Advanced"],
+        downloadLink: "#"
+    }
+];
+
+const apks = [
+    {
+        name: "Minecraft v1.21",
+        description: "Latest stable build with new features.",
+        image: "https://i.imgur.com/MboC4Fc.png",
+        tags: ["Stable"],
+        downloadLink: "#"
+    },
+    {
+        name: "Minecraft Modded",
+        description: "Performance optimized version.",
+        image: "https://i.imgur.com/MboC4Fc.png",
+        tags: ["Modded"],
+        downloadLink: "#"
+    }
+];
 
 // ==================== PAGE NAVIGATION ====================
 function goToPage(pageId) {
@@ -46,42 +138,19 @@ function goToHome() {
     window.scrollTo(0, 0);
 }
 
-// ==================== DATA (Add more items here) ====================
-const allAddons = [
-    { name: "Snake Addon Pack", description: "Adds realistic snakes with animations and AI behavior.", image: "https://i.imgur.com/YHoAhki.png", tags: ["Animals", "Mobs"], downloadLink: "#" },
-    { name: "Epic Weapons Arsenal", description: "Powerful weapons with custom models.", image: "https://i.imgur.com/q0kFxLH.jpeg", tags: ["Weapons", "PvP"], downloadLink: "#" },
-];
-
-const allResources = [
-    { name: "HD Textures Pack", description: "High-resolution blocks and item visuals.", image: "https://i.imgur.com/YHoAhki.png", tags: ["HD", "Visuals"], downloadLink: "#" },
-    { name: "Realistic Shaders", description: "Realistic lighting and shadows.", image: "https://i.imgur.com/q0kFxLH.jpeg", tags: ["Shaders"], downloadLink: "#" },
-];
-
-const hackClients = [
-    { name: "Toolbox Pro", description: "Feature-rich client with advanced tools.", image: "https://i.imgur.com/OlYW3ka.png", tags: ["Tools"], downloadLink: "#" },
-    { name: "Hacked Client X", description: "Advanced features for experienced players.", image: "https://i.imgur.com/7wpie0Y.jpeg", tags: ["Advanced"], downloadLink: "#" },
-];
-
-const apks = [
-    { name: "Minecraft v1.21", description: "Latest stable build with new features.", image: "https://i.imgur.com/MboC4Fc.png", tags: ["Stable"], downloadLink: "#" },
-    { name: "Minecraft Modded", description: "Performance optimized version.", image: "https://i.imgur.com/MboC4Fc.png", tags: ["Modded"], downloadLink: "#" },
-];
-
-// ==================== PAGINATION ====================
-const ADDONS_PER_PAGE = 10;
-const RESOURCES_PER_PAGE = 10;
+// ==================== DISPLAY FUNCTIONS ====================
 let currentPage = 1;
 let resourcePageNum = 1;
+const ITEMS_PER_PAGE = 9;
 let filteredAddons = [...allAddons];
 let filteredResources = [...allResources];
 
-// ==================== SEARCH ====================
 function searchAddons() {
     const term = document.getElementById('searchInput').value.toLowerCase();
-    filteredAddons = allAddons.filter(a => 
-        a.name.toLowerCase().includes(term) || 
-        a.description.toLowerCase().includes(term) || 
-        a.tags.some(t => t.toLowerCase().includes(term))
+    filteredAddons = allAddons.filter(addon => 
+        addon.name.toLowerCase().includes(term) || 
+        addon.description.toLowerCase().includes(term) || 
+        addon.tags.some(tag => tag.toLowerCase().includes(term))
     );
     currentPage = 1;
     displayAddons();
@@ -89,63 +158,216 @@ function searchAddons() {
 
 function searchResources() {
     const term = document.getElementById('resourceSearchInput').value.toLowerCase();
-    filteredResources = allResources.filter(a => 
-        a.name.toLowerCase().includes(term) || 
-        a.description.toLowerCase().includes(term) || 
-        a.tags.some(t => t.toLowerCase().includes(term))
+    filteredResources = allResources.filter(resource => 
+        resource.name.toLowerCase().includes(term) || 
+        resource.description.toLowerCase().includes(term) || 
+        resource.tags.some(tag => tag.toLowerCase().includes(term))
     );
     resourcePageNum = 1;
     displayResources();
 }
 
-// ==================== DISPLAY ====================
 function displayAddons() {
     const grid = document.getElementById('addonsGrid');
-    const totalPages = Math.ceil(filteredAddons.length / ADDONS_PER_PAGE);
+    const totalPages = Math.ceil(filteredAddons.length / ITEMS_PER_PAGE);
+    
     grid.innerHTML = '';
     if (filteredAddons.length === 0) {
         grid.innerHTML = '<div class="no-results">No addons found.</div>';
         document.getElementById('pagination').style.display = 'none';
         return;
     }
+
     document.getElementById('pagination').style.display = 'flex';
-    const start = (currentPage - 1) * ADDONS_PER_PAGE;
-    const end = Math.min(start + ADDONS_PER_PAGE, filteredAddons.length);
-    for (let i = start; i < end; i++) grid.appendChild(createAddonCard(filteredAddons[i]));
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    const end = Math.min(start + ITEMS_PER_PAGE, filteredAddons.length);
+    
+    for (let i = start; i < end; i++) {
+        grid.appendChild(createCard(filteredAddons[i]));
+    }
+    
     updatePagination(totalPages, 'addons');
 }
 
 function displayResources() {
     const grid = document.getElementById('resourceGrid');
-    const totalPages = Math.ceil(filteredResources.length / RESOURCES_PER_PAGE);
+    const totalPages = Math.ceil(filteredResources.length / ITEMS_PER_PAGE);
+    
     grid.innerHTML = '';
     if (filteredResources.length === 0) {
-        grid.innerHTML = '<div class="no-results">No resource packs found.</div>';
+        grid.innerHTML = '<div class="no-results">No resources found.</div>';
         document.getElementById('resourcePagination').style.display = 'none';
         return;
     }
+
     document.getElementById('resourcePagination').style.display = 'flex';
-    const start = (resourcePageNum - 1) * RESOURCES_PER_PAGE;
-    const end = Math.min(start + RESOURCES_PER_PAGE, filteredResources.length);
-    for (let i = start; i < end; i++) grid.appendChild(createAddonCard(filteredResources[i]));
+    const start = (resourcePageNum - 1) * ITEMS_PER_PAGE;
+    const end = Math.min(start + ITEMS_PER_PAGE, filteredResources.length);
+    
+    for (let i = start; i < end; i++) {
+        grid.appendChild(createCard(filteredResources[i]));
+    }
+    
     updatePagination(totalPages, 'resources');
 }
 
 function displayNewsAddons() {
     const grid = document.getElementById('newAddonsGrid');
     grid.innerHTML = '';
-    for (let i = 0; i < Math.min(3, allAddons.length); i++) {
-        grid.appendChild(createNewsCard(allAddons[i]));
-    }
+    allAddons.slice(0, 3).forEach(addon => {
+        grid.appendChild(createNewsCard(addon));
+    });
 }
 
 function displayNewsResources() {
     const grid = document.getElementById('newResourcesGrid');
     grid.innerHTML = '';
-    for (let i = 0; i < Math.min(3, allResources.length); i++) {
-        grid.appendChild(createNewsCard(allResources[i]));
+    allResources.slice(0, 3).forEach(resource => {
+        grid.appendChild(createNewsCard(resource));
+    });
+}
+
+function displayNewsClients() {
+    const grid = document.getElementById('newClientsGrid');
+    grid.innerHTML = '';
+    hackClients.slice(0, 3).forEach(client => {
+        grid.appendChild(createNewsCard(client));
+    });
+}
+
+function displayNewsApks() {
+    const grid = document.getElementById('newApksGrid');
+    grid.innerHTML = '';
+    apks.slice(0, 3).forEach(apk => {
+        grid.appendChild(createNewsCard(apk));
+    });
+}
+
+// ==================== CARD CREATION ====================
+function createCard(item) {
+    const card = document.createElement('div');
+    card.className = 'addon-card';
+    card.onclick = () => window.open(item.downloadLink, '_blank');
+    
+    card.innerHTML = `
+        <div class="addon-image">
+            <img src="${item.image}" alt="${item.name}">
+        </div>
+        <div class="addon-content">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <div class="addon-tags">
+                ${item.tags.map(tag => `<span class="addon-tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+        <div class="download-icon">⬇️</div>
+    `;
+    
+    return card;
+}
+
+function createNewsCard(item) {
+    const card = document.createElement('div');
+    card.className = 'news-card';
+    card.onclick = () => window.open(item.downloadLink, '_blank');
+    
+    card.innerHTML = `
+        <div class="news-card-image">
+            <img src="${item.image}" alt="${item.name}">
+        </div>
+        <div class="news-card-content">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <div class="news-card-tags">
+                ${item.tags.map(tag => `<span class="news-card-tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
+
+// ==================== PAGINATION ====================
+function updatePagination(totalPages, type) {
+    const isAddons = type === 'addons';
+    const current = isAddons ? currentPage : resourcePageNum;
+    const pageContainer = document.getElementById(isAddons ? 'pageNumbers' : 'resourcePageNumbers');
+    const currentDisplay = document.getElementById(isAddons ? 'currentPageDisplay' : 'resourceCurrentDisplay');
+    const totalDisplay = document.getElementById(isAddons ? 'totalPagesDisplay' : 'resourceTotalDisplay');
+    
+    currentDisplay.textContent = current;
+    totalDisplay.textContent = totalPages;
+    
+    pageContainer.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = `page-btn${i === current ? ' active' : ''}`;
+        btn.textContent = i;
+        btn.onclick = () => {
+            if (isAddons) {
+                currentPage = i;
+                displayAddons();
+            } else {
+                resourcePageNum = i;
+                displayResources();
+            }
+            window.scrollTo(0, 0);
+        };
+        pageContainer.appendChild(btn);
     }
 }
+
+function previousPage(type) {
+    if (type === 'addons' && currentPage > 1) {
+        currentPage--;
+        displayAddons();
+    } else if (type === 'resources' && resourcePageNum > 1) {
+        resourcePageNum--;
+        displayResources();
+    }
+    window.scrollTo(0, 0);
+}
+
+function nextPage(type) {
+    const totalPages = Math.ceil(
+        (type === 'addons' ? filteredAddons.length : filteredResources.length) / ITEMS_PER_PAGE
+    );
+    
+    if (type === 'addons' && currentPage < totalPages) {
+        currentPage++;
+        displayAddons();
+    } else if (type === 'resources' && resourcePageNum < totalPages) {
+        resourcePageNum++;
+        displayResources();
+    }
+    window.scrollTo(0, 0);
+}
+
+function goToFirstPage(type) {
+    if (type === 'addons') {
+        currentPage = 1;
+        displayAddons();
+    } else {
+        resourcePageNum = 1;
+        displayResources();
+    }
+    window.scrollTo(0, 0);
+}
+
+function goToLastPage(type) {
+    const totalPages = Math.ceil(
+        (type === 'addons' ? filteredAddons.length : filteredResources.length) / ITEMS_PER_PAGE
+    );
+    
+    if (type === 'addons') {
+        currentPage = totalPages;
+        displayAddons();
+    } else {
+        resourcePageNum = totalPages;
+        displayResources();
+    }
+    window.scrollTo(0, 0);
+}}
 
 function displayNewsClients() {
     const grid = document.getElementById('newClientsGrid');
@@ -269,3 +491,4 @@ function goToLastPage(type) {
     }
     window.scrollTo(0, 0);
 }
+
