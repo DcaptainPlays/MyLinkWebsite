@@ -14,13 +14,14 @@
 </head>
 <body>
     <!-- Security Check Loading Screen -->
-    <div id="securityCheck" class="security-screen">
+    <div id="securityCheck" class="security-screen active">
         <div class="security-container">
-            <div class="security-logo"></div>
+            <div class="security-logo"></div>
             <h1>Checking Access...</h1>
             <p id="securityStatus">Verifying your entry...</p>
             <div class="loader"></div>
         </div>
+        <div class="blur-overlay"></div>
     </div>
 
     <!-- Animated Background -->
@@ -35,7 +36,7 @@
     <!-- Main Website Content (Hidden until verified) -->
     <div id="mainContent" class="hidden">
         <!-- Main Home Page -->
-        <div id="homePage" class="page active">
+        <div id="homePage" class="page">
             <div class="container">
                 <!-- Profile Section -->
                 <div class="profile-section">
@@ -51,7 +52,7 @@
                     </div>
                 </div>
 
-                <!-- Main Navigation Buttons (3 buttons now) -->
+                <!-- Main Navigation Buttons -->
                 <div class="button-grid">
                     <div class="main-button" onclick="goToPage('socialsPage')">
                         <div class="button-image">
@@ -61,7 +62,7 @@
                             <h3>Socials</h3>
                             <p>Find me online</p>
                         </div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </div>
 
                     <div class="main-button" onclick="goToPage('downloadsPage')">
@@ -72,7 +73,7 @@
                             <h3>Downloads</h3>
                             <p>Get addons, packs, and tools</p>
                         </div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </div>
 
                     <div class="main-button" onclick="goToPage('aboutPage')">
@@ -83,7 +84,7 @@
                             <h3>About Me</h3>
                             <p>Learn more about me</p>
                         </div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </div>
                 </div>
 
@@ -91,29 +92,37 @@
                 <div class="news-section">
                     <div class="section-badge new">NEW!!</div>
                     <h2 class="section-title">Latest Addons</h2>
-                    <div class="news-grid" id="newAddonsGrid"></div>
-                    <button class="see-more-btn" onclick="goToPage('addonsPage')">See More Addons </button>
+                    <div class="news-grid" id="newAddonsGrid">
+                        <!-- Latest addon news will be added here -->
+                    </div>
+                    <button class="see-more-btn" onclick="goToPage('addonsPage')">See More Addons</button>
                 </div>
 
                 <div class="news-section">
                     <div class="section-badge">NEW!</div>
                     <h2 class="section-title">Resource Packs</h2>
-                    <div class="news-grid" id="newResourcesGrid"></div>
-                    <button class="see-more-btn" onclick="goToPage('resourcePage')">See More Packs </button>
+                    <div class="news-grid" id="newResourcesGrid">
+                        <!-- Latest resource pack news will be added here -->
+                    </div>
+                    <button class="see-more-btn" onclick="goToPage('resourcePage')">See More Packs</button>
                 </div>
 
                 <div class="news-section">
                     <div class="section-badge">POPULAR</div>
                     <h2 class="section-title">Hack Clients</h2>
-                    <div class="news-grid" id="newClientsGrid"></div>
-                    <button class="see-more-btn" onclick="goToPage('hackClientPage')">See All Clients </button>
+                    <div class="news-grid" id="newClientsGrid">
+                        <!-- Latest hack client news will be added here -->
+                    </div>
+                    <button class="see-more-btn" onclick="goToPage('hackClientPage')">See All Clients</button>
                 </div>
 
                 <div class="news-section">
                     <div class="section-badge">UPDATED</div>
                     <h2 class="section-title">Minecraft APKs</h2>
-                    <div class="news-grid" id="newApksGrid"></div>
-                    <button class="see-more-btn" onclick="goToPage('apkPage')">See All APKs </button>
+                    <div class="news-grid" id="newApksGrid">
+                        <!-- Latest APK news will be added here -->
+                    </div>
+                    <button class="see-more-btn" onclick="goToPage('apkPage')">See All APKs</button>
                 </div>
             </div>
 
@@ -140,21 +149,21 @@
                         <h4>Stay Connected</h4>
                         <p>Follow me for the latest Minecraft content, addons, and updates!</p>
                         <div class="footer-socials">
-                            <a href="https://youtube.com/@dcaptainplays" target="_blank"></a>
-                            <a href="YOUR_DISCORD_LINK" target="_blank"></a>
-                            <a href="YOUR_TIKTOK_LINK" target="_blank"></a>
+                            <a href="https://youtube.com/@dcaptainplays" target="_blank"></a>
+                            <a href="YOUR_DISCORD_LINK" target="_blank"></a>
+                            <a href="YOUR_TIKTOK_LINK" target="_blank"></a>
                         </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>© 2025 DcaptainPlays. All rights reserved. Made with  for the Minecraft community</p>
+                    <p>© 2025 DcaptainPlays. All rights reserved. Made with ❤️ for the Minecraft community</p>
                 </div>
             </footer>
         </div>
 
         <!-- About Page -->
         <div id="aboutPage" class="page">
-            <button class="back-button" onclick="goToHome()"> Back</button>
+            <button class="back-button" onclick="goToHome()">← Back</button>
             <div class="container">
                 <div class="page-header">
                     <h1>About Me</h1>
@@ -162,7 +171,7 @@
                 </div>
                 <div class="about-section">
                     <h2>About Me</h2>
-                    <p>Welcome! I'm DcaptainPlays, a passionate Minecraft content creator and addon developer from the Philippines. I create unique addons and share my gameplay experiences on YouTube. Check out my channel for tutorials, gameplay, and addon showcases!</p>
+                    <p>Welcome! I'm DcaptainPlays, a passionate Minecraft content creator and addon developer from the Philippines. I create unique addons and share my gameplay experiences on YouTube.</p>
                     <div class="about-stats">
                         <div class="stat-box">
                             <h3>100+</h3>
@@ -183,7 +192,7 @@
 
         <!-- Socials Page -->
         <div id="socialsPage" class="page">
-            <button class="back-button" onclick="goToHome()"> Back</button>
+            <button class="back-button" onclick="goToHome()">← Back</button>
             <div class="container">
                 <div class="page-header">
                     <h1>My Socials</h1>
@@ -193,17 +202,17 @@
                     <a href="https://youtube.com/@dcaptainplays" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/YHoAhki.png" alt="YouTube"></div>
                         <div class="button-content"><h3>YouTube</h3><p>Watch my videos</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                     <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/RfclprT.png" alt="Discord"></div>
                         <div class="button-content"><h3>Discord</h3><p>Join my community</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                     <a href="YOUR_TIKTOK_LINK" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/glkqEI2.png" alt="TikTok"></div>
                         <div class="button-content"><h3>TikTok</h3><p>Watch short clips</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                 </div>
             </div>
@@ -211,7 +220,7 @@
 
         <!-- Downloads Main Page -->
         <div id="downloadsPage" class="page">
-            <button class="back-button" onclick="goToHome()"> Back</button>
+            <button class="back-button" onclick="goToHome()">← Back</button>
             <div class="container">
                 <div class="page-header">
                     <h1>Downloads</h1>
@@ -221,22 +230,22 @@
                     <div class="main-button" onclick="goToPage('addonsPage')">
                         <div class="button-image"><img src="https://i.imgur.com/q0kFxLH.jpeg" alt="Addons"></div>
                         <div class="button-content"><h3>Addons</h3><p>Download Minecraft addons</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </div>
                     <div class="main-button" onclick="goToPage('resourcePage')">
                         <div class="button-image"><img src="https://i.imgur.com/SBU16HK.jpeg" alt="Resource Packs"></div>
                         <div class="button-content"><h3>Resource Packs</h3><p>Visual improvements & textures</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </div>
                     <div class="main-button" onclick="goToPage('apkPage')">
                         <div class="button-image"><img src="https://i.imgur.com/r7mwvRI.jpeg" alt="APKs"></div>
                         <div class="button-content"><h3>APKs</h3><p>Download modified Minecraft APKs</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </div>
                     <div class="main-button" onclick="goToPage('hackClientPage')">
                         <div class="button-image"><img src="https://i.imgur.com/7wpie0Y.jpeg" alt="Hack Clients"></div>
                         <div class="button-content"><h3>Hack Clients</h3><p>Explore client tools</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </div>
                 </div>
             </div>
@@ -244,7 +253,7 @@
 
         <!-- Addons Page -->
         <div id="addonsPage" class="page">
-            <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
+            <button class="back-button" onclick="goToPage('downloadsPage')">← Back</button>
             <div class="container">
                 <div class="page-header">
                     <h1>Minecraft Addons</h1>
@@ -252,15 +261,15 @@
                 </div>
                 <div class="search-container">
                     <input type="text" id="searchInput" placeholder="Search addons..." onkeyup="searchAddons()">
-                    <span class="search-icon"></span>
+                    <span class="search-icon">🔍</span>
                 </div>
                 <div class="addons-grid" id="addonsGrid"></div>
                 <div class="pagination" id="pagination">
-                    <button class="page-btn" onclick="goToFirstPage('addons')"></button>
-                    <button class="page-btn" onclick="previousPage('addons')"></button>
+                    <button class="page-btn" onclick="goToFirstPage('addons')">«</button>
+                    <button class="page-btn" onclick="previousPage('addons')">‹</button>
                     <span id="pageNumbers"></span>
-                    <button class="page-btn" onclick="nextPage('addons')"></button>
-                    <button class="page-btn" onclick="goToLastPage('addons')"></button>
+                    <button class="page-btn" onclick="nextPage('addons')">›</button>
+                    <button class="page-btn" onclick="goToLastPage('addons')">»</button>
                 </div>
                 <div class="page-info">
                     Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span>
@@ -270,7 +279,7 @@
 
         <!-- Resource Pack Page -->
         <div id="resourcePage" class="page">
-            <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
+            <button class="back-button" onclick="goToPage('downloadsPage')">← Back</button>
             <div class="container">
                 <div class="page-header">
                     <h1>Resource Packs</h1>
@@ -278,15 +287,15 @@
                 </div>
                 <div class="search-container">
                     <input type="text" id="resourceSearchInput" placeholder="Search resource packs..." onkeyup="searchResources()">
-                    <span class="search-icon"></span>
+                    <span class="search-icon">🔍</span>
                 </div>
                 <div class="addons-grid" id="resourceGrid"></div>
                 <div class="pagination" id="resourcePagination">
-                    <button class="page-btn" onclick="goToFirstPage('resources')"></button>
-                    <button class="page-btn" onclick="previousPage('resources')"></button>
+                    <button class="page-btn" onclick="goToFirstPage('resources')">«</button>
+                    <button class="page-btn" onclick="previousPage('resources')">‹</button>
                     <span id="resourcePageNumbers"></span>
-                    <button class="page-btn" onclick="nextPage('resources')"></button>
-                    <button class="page-btn" onclick="goToLastPage('resources')"></button>
+                    <button class="page-btn" onclick="nextPage('resources')">›</button>
+                    <button class="page-btn" onclick="goToLastPage('resources')">»</button>
                 </div>
                 <div class="page-info">
                     Page <span id="resourceCurrentDisplay">1</span> of <span id="resourceTotalDisplay">1</span>
@@ -296,7 +305,7 @@
 
         <!-- APK Page -->
         <div id="apkPage" class="page">
-            <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
+            <button class="back-button" onclick="goToPage('downloadsPage')">← Back</button>
             <div class="container">
                 <div class="page-header">
                     <h1>Minecraft APKs</h1>
@@ -306,17 +315,17 @@
                     <a href="YOUR_APK_LINK_1" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
                         <div class="button-content"><h3>Minecraft v1.21</h3><p>Latest stable build</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                     <a href="YOUR_APK_LINK_2" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
                         <div class="button-content"><h3>Minecraft Modded</h3><p>Performance optimized</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                     <a href="YOUR_APK_LINK_3" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
                         <div class="button-content"><h3>Minecraft Beta</h3><p>Experimental features</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                 </div>
             </div>
@@ -324,7 +333,7 @@
 
         <!-- Hack Client Page -->
         <div id="hackClientPage" class="page">
-            <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
+            <button class="back-button" onclick="goToPage('downloadsPage')">← Back</button>
             <div class="container">
                 <div class="page-header">
                     <h1>Hack Clients</h1>
@@ -334,17 +343,17 @@
                     <a href="YOUR_CLIENT_LINK_1" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
                         <div class="button-content"><h3>Toolbox Pro</h3><p>Feature-rich client</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                     <a href="YOUR_CLIENT_LINK_2" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
                         <div class="button-content"><h3>Hacked Client X</h3><p>Advanced features</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                     <a href="YOUR_CLIENT_LINK_3" target="_blank" class="main-button">
                         <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
                         <div class="button-content"><h3>Mod Menu Plus</h3><p>Custom mod support</p></div>
-                        <div class="button-arrow"></div>
+                        <div class="button-arrow"></div>
                     </a>
                 </div>
             </div>
@@ -353,4 +362,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+    </html>
