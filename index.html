@@ -3,18 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DcaptainPlays - Protected Site</title>
+  <title>DcaptainPlays Website — Download Addons and More</title>
   <link rel="stylesheet" href="style.css" />
+
+  <script>
+    // Prevent being loaded inside an iframe (Linkvertise split screen)
+    if (window.top !== window.self) {
+      window.top.location = window.location.href;
+    }
+  </script>
 </head>
+
 <body>
   <main class="container">
     <h1>Welcome to DcaptainPlays</h1>
     <p id="status">Checking access...</p>
+
     <div id="content" class="hidden">
       <p>Access granted ✅ You came through Linkvertise!</p>
       <p>This is your protected website content.</p>
     </div>
   </main>
-  <script src="script.js"></script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const auth = urlParams.get("auth");
+
+    const targetOrigin = "https://mylinkwebsite.pages.dev/?auth=dcaptain123";
+
+    if (auth !== "dcaptain123") {
+      // Redirect to Linkvertise if access is invalid
+      window.location.href = "https://link-hub.net/1408907/57D6CaRirKtJ";
+    } else {
+      // If correct, show content
+      document.getElementById("status").innerText = "Access granted ✅";
+      document.getElementById("content").classList.remove("hidden");
+
+      // Optional: Load worker page if you still want to show content from the proxy
+      // const iframe = document.createElement("iframe");
+      // iframe.src = targetOrigin;
+      // iframe.style.width = "100%";
+      // iframe.style.height = "80vh";
+      // iframe.style.border = "none";
+      // document.body.appendChild(iframe);
+    }
+  </script>
 </body>
 </html>
