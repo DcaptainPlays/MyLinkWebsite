@@ -69,6 +69,9 @@ function grantAccess() {
         displayNewsResources();
         displayNewsClients();
         displayNewsApks();
+        
+        // Initialize history state for back button handling
+        initializeBackButtonHandler();
     }, 1200);
 }
 
@@ -90,13 +93,69 @@ window.addEventListener("focus", function() {
     if (!isAuthenticated()) checkAccess();
 });
 
-// Do not clear auth on reload — comment out to preserve session
-// window.addEventListener('beforeunload', function() {
-//     setAuthenticated(false);
-// });
-
 // Initialize security check when page loads
 window.addEventListener("DOMContentLoaded", checkAccess);
+
+// ==================== BACK BUTTON HANDLER ====================
+let isOnHomePage = true;
+let homePageScrollAttempts = 0;
+
+function initializeBackButtonHandler() {
+    // Push initial state
+    history.pushState({ page: 'home', scrolled: false }, '', '');
+    
+    window.addEventListener('popstate', handleBackButton);
+}
+
+function handleBackButton(event) {
+    const activePage = document.querySelector('.page.active');
+    const activePageId = activePage ? activePage.id : 'homePage';
+    
+    // If we're on the home page
+    if (activePageId === 'homePage') {
+        // Check if we're already at the top
+        if (window.scrollY === 0) {
+            // User pressed back again while at top, redirect to Linkvertise
+            homePageScrollAttempts++;
+            if (homePageScrollAttempts >= 1) {
+                setAuthenticated(false);
+                window.location.href = linkvertiseURL;
+                return;
+            }
+        } else {
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            homePageScrollAttempts = 0;
+            // Push state again so user can press back one more time to exit
+            history.pushState({ page: 'home', scrolled: true }, '', '');
+        }
+    } else {
+        // We're on a sub-page, navigate back to appropriate page
+        navigateBackFromSubPage(activePageId);
+        homePageScrollAttempts = 0; // Reset counter when leaving home
+    }
+}
+
+function navigateBackFromSubPage(currentPageId) {
+    // Determine which page to go back to
+    const parentPages = {
+        'aboutPage': 'homePage',
+        'socialsPage': 'homePage',
+        'downloadsPage': 'homePage',
+        'addonsPage': 'downloadsPage',
+        'resourcePage': 'downloadsPage',
+        'apkPage': 'downloadsPage',
+        'hackClientPage': 'downloadsPage'
+    };
+    
+    const targetPage = parentPages[currentPageId] || 'homePage';
+    
+    if (targetPage === 'homePage') {
+        goToHome();
+    } else {
+        goToPage(targetPage);
+    }
+}
 
 // ==================== DATA ====================
 const allAddons = [
@@ -223,6 +282,14 @@ function goToPage(pageId) {
         target.classList.add('active');
         window.scrollTo(0, 0);
     }
+    
+    // Update home page flag
+    isOnHomePage = (pageId === 'homePage');
+    homePageScrollAttempts = 0; // Reset scroll attempts
+    
+    // Push new state to history
+    history.pushState({ page: pageId }, '', '');
+    
     if (pageId === 'addonsPage') displayAddons();
     if (pageId === 'resourcePage') displayResources();
 }
@@ -231,6 +298,12 @@ function goToHome() {
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     document.getElementById('homePage').classList.add('active');
     window.scrollTo(0, 0);
+    
+    isOnHomePage = true;
+    homePageScrollAttempts = 0;
+    
+    // Push new state to history
+    history.pushState({ page: 'home' }, '', '');
 }
 
 // ==================== DISPLAY FUNCTIONS ====================
