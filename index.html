@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DcaptainPlays - Minecraft Addons</title>
+    <title>DcaptainPlays - Minecraft Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,140 +33,218 @@
             </div>
 
             <div class="button-grid">
-                <a href="https://youtube.com/@dcaptainplays?si=8te4HfC6JKYSPgQy" target="_blank" class="main-button youtube-btn">
-                    <div class="button-icon"></div>
-                    <div class="button-content">
-                        <h3>YouTube Channel</h3>
-                        <p>Watch my latest videos</p>
+                <div class="main-button" onclick="goToPage('socialsPage')">
+                    <div class="button-image">
+                        <img src="https://i.imgur.com/YHoAhki.png" alt="Socials">
                     </div>
-                    <div class="button-arrow"></div>
-                </a>
+                    <div class="button-content">
+                        <h3>Socials</h3>
+                        <p>Find me online</p>
+                    </div>
+                    <div class="button-arrow"></div>
+                </div>
 
-                <div class="main-button addons-btn" onclick="goToAddons()">
-                    <div class="button-icon"></div>
-                    <div class="button-content">
-                        <h3>Minecraft Addons</h3>
-                        <p>Download custom addons</p>
+                <div class="main-button" onclick="goToPage('downloadsPage')">
+                    <div class="button-image">
+                        <img src="https://i.imgur.com/q0kFxLH.jpeg" alt="Downloads">
                     </div>
-                    <div class="button-arrow"></div>
+                    <div class="button-content">
+                        <h3>Downloads</h3>
+                        <p>Get addons, packs, and tools</p>
+                    </div>
+                    <div class="button-arrow"></div>
+                </div>
+
+                <div class="main-button" onclick="goToPage('aboutPage')">
+                    <div class="button-image">
+                        <img src="https://i.imgur.com/VniYVtv.png" alt="About">
+                    </div>
+                    <div class="button-content">
+                        <h3>About Me</h3>
+                        <p>Learn more about me</p>
+                    </div>
+                    <div class="button-arrow"></div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="about-section">
-                <h2>About Me</h2>
-                <p>Welcome! I'm DcaptainPlays, a passionate Minecraft content creator and addon developer. I create unique addons and share my gameplay experiences on YouTube. Check out my channel for tutorials, gameplay, and addon showcases!</p>
+    <!-- Socials Page -->
+    <div id="socialsPage" class="page">
+        <button class="back-button" onclick="goToHome()"> Back</button>
+        <div class="container">
+            <div class="page-header">
+                <h1>My Socials</h1>
+                <p>Connect with me on these platforms</p>
             </div>
+            <div class="button-grid">
+                <a href="https://youtube.com/@dcaptainplays" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/YHoAhki.png" alt="YouTube"></div>
+                    <div class="button-content"><h3>YouTube</h3><p>Watch my videos</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+                <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/40K6Y0M.png" alt="Discord"></div>
+                    <div class="button-content"><h3>Discord</h3><p>Join my community</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+                <a href="YOUR_TIKTOK_LINK" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/WEOFL3G.png" alt="TikTok"></div>
+                    <div class="button-content"><h3>TikTok</h3><p>Watch short clips</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Downloads Main Page -->
+    <div id="downloadsPage" class="page">
+        <button class="back-button" onclick="goToHome()"> Back</button>
+        <div class="container">
+            <div class="page-header">
+                <h1>Downloads</h1>
+                <p>Choose what to explore</p>
+            </div>
+            <div class="button-grid">
+                <div class="main-button" onclick="goToPage('addonsPage')">
+                    <div class="button-image"><img src="https://i.imgur.com/q0kFxLH.jpeg" alt="Addons"></div>
+                    <div class="button-content"><h3>Addons</h3><p>Download Minecraft addons</p></div>
+                    <div class="button-arrow"></div>
+                </div>
+                <div class="main-button" onclick="goToPage('resourcePage')">
+                    <div class="button-image"><img src="https://i.imgur.com/8H0OAvB.png" alt="Resource Packs"></div>
+                    <div class="button-content"><h3>Resource Packs</h3><p>Visual improvements & textures</p></div>
+                    <div class="button-arrow"></div>
+                </div>
+                <div class="main-button" onclick="goToPage('apkPage')">
+                    <div class="button-image"><img src="https://i.imgur.com/8VZzOUE.png" alt="APKs"></div>
+                    <div class="button-content"><h3>APKs</h3><p>Download modified Minecraft APKs</p></div>
+                    <div class="button-arrow"></div>
+                </div>
+                <div class="main-button" onclick="goToPage('hackClientPage')">
+                    <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Hack Clients"></div>
+                    <div class="button-content"><h3>Hack Clients</h3><p>Explore client tools</p></div>
+                    <div class="button-arrow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="page">
+        <button class="back-button" onclick="goToHome()"> Back</button>
+        <div class="container about-section">
+            <h2>About Me</h2>
+            <p>Welcome! I'm DcaptainPlays, a passionate Minecraft content creator and addon developer. 
+            I create unique addons and share my gameplay experiences on YouTube. 
+            Check out my channel for tutorials, gameplay, and addon showcases!</p>
         </div>
     </div>
 
     <!-- Addons Page -->
     <div id="addonsPage" class="page">
-        <button class="back-button" onclick="goToHome()">
-            <span class="arrow-left"></span> Back
-        </button>
-
+        <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
         <div class="container">
             <div class="page-header">
                 <h1>Minecraft Addons</h1>
                 <p>Choose your favorite addon to download</p>
             </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search addons..." onkeyup="searchAddons()">
+                <span class="search-icon"></span>
+            </div>
+            <div class="addons-grid" id="addonsGrid"></div>
+            <div class="pagination" id="pagination">
+                <button class="page-btn" onclick="goToFirstPage('addons')">«</button>
+                <button class="page-btn" onclick="previousPage('addons')">‹</button>
+                <span id="pageNumbers"></span>
+                <button class="page-btn" onclick="nextPage('addons')">›</button>
+                <button class="page-btn" onclick="goToLastPage('addons')">»</button>
+            </div>
+            <div class="page-info">
+                Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span>
+            </div>
+        </div>
+    </div>
 
-            <div class="addons-grid">
-                <!-- Addon Card 1 -->
-                <div class="addon-card" onclick="window.open('ADDON_1_DOWNLOAD_LINK', '_blank')">
-                    <div class="addon-image">
-                        <img src="https://via.placeholder.com/300x200/4CAF50/ffffff?text=Addon+1" alt="Addon 1">
-                    </div>
-                    <div class="addon-content">
-                        <h3>Epic Weapons Addon</h3>
-                        <p>Add powerful weapons to your Minecraft world</p>
-                        <div class="addon-tags">
-                            <span class="addon-tag">Weapons</span>
-                            <span class="addon-tag">PvP</span>
-                        </div>
-                    </div>
-                    <div class="download-icon"></div>
-                </div>
+    <!-- Resource Pack Page -->
+    <div id="resourcePage" class="page">
+        <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
+        <div class="container">
+            <div class="page-header">
+                <h1>Resource Packs</h1>
+                <p>Choose your favorite pack to download</p>
+            </div>
+            <div class="search-container">
+                <input type="text" id="resourceSearchInput" placeholder="Search resource packs..." onkeyup="searchResources()">
+                <span class="search-icon"></span>
+            </div>
+            <div class="addons-grid" id="resourceGrid"></div>
+            <div class="pagination" id="resourcePagination">
+                <button class="page-btn" onclick="goToFirstPage('resources')">«</button>
+                <button class="page-btn" onclick="previousPage('resources')">‹</button>
+                <span id="resourcePageNumbers"></span>
+                <button class="page-btn" onclick="nextPage('resources')">›</button>
+                <button class="page-btn" onclick="goToLastPage('resources')">»</button>
+            </div>
+            <div class="page-info">
+                Page <span id="resourceCurrentDisplay">1</span> of <span id="resourceTotalDisplay">1</span>
+            </div>
+        </div>
+    </div>
 
-                <!-- Addon Card 2 -->
-                <div class="addon-card" onclick="window.open('ADDON_2_DOWNLOAD_LINK', '_blank')">
-                    <div class="addon-image">
-                        <img src="https://via.placeholder.com/300x200/2196F3/ffffff?text=Addon+2" alt="Addon 2">
-                    </div>
-                    <div class="addon-content">
-                        <h3>Custom Mobs Pack</h3>
-                        <p>New challenging mobs and bosses</p>
-                        <div class="addon-tags">
-                            <span class="addon-tag">Mobs</span>
-                            <span class="addon-tag">Boss</span>
-                        </div>
-                    </div>
-                    <div class="download-icon"></div>
-                </div>
+    <!-- APK Page -->
+    <div id="apkPage" class="page">
+        <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
+        <div class="container">
+            <div class="page-header">
+                <h1>APKs</h1>
+                <p>Download modified Minecraft APKs</p>
+            </div>
+            <div class="button-grid">
+                <a href="YOUR_APK_LINK_1" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
+                    <div class="button-content"><h3>APK #1</h3><p>Latest build</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+                <a href="YOUR_APK_LINK_2" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
+                    <div class="button-content"><h3>APK #2</h3><p>Performance optimized</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+                <a href="YOUR_APK_LINK_3" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
+                    <div class="button-content"><h3>APK #3</h3><p>Experimental edition</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+            </div>
+        </div>
+    </div>
 
-                <!-- Addon Card 3 -->
-                <div class="addon-card" onclick="window.open('ADDON_3_DOWNLOAD_LINK', '_blank')">
-                    <div class="addon-image">
-                        <img src="https://via.placeholder.com/300x200/FF5722/ffffff?text=Addon+3" alt="Addon 3">
-                    </div>
-                    <div class="addon-content">
-                        <h3>Advanced Tools Mod</h3>
-                        <p>Enhanced tools with special abilities</p>
-                        <div class="addon-tags">
-                            <span class="addon-tag">Tools</span>
-                            <span class="addon-tag">Mining</span>
-                        </div>
-                    </div>
-                    <div class="download-icon"></div>
-                </div>
-
-                <!-- Addon Card 4 -->
-                <div class="addon-card" onclick="window.open('ADDON_4_DOWNLOAD_LINK', '_blank')">
-                    <div class="addon-image">
-                        <img src="https://via.placeholder.com/300x200/9C27B0/ffffff?text=Addon+4" alt="Addon 4">
-                    </div>
-                    <div class="addon-content">
-                        <h3>Furniture Plus</h3>
-                        <p>Decorate your builds with furniture</p>
-                        <div class="addon-tags">
-                            <span class="addon-tag">Decoration</span>
-                            <span class="addon-tag">Building</span>
-                        </div>
-                    </div>
-                    <div class="download-icon"></div>
-                </div>
-
-                <!-- Addon Card 5 -->
-                <div class="addon-card" onclick="window.open('ADDON_5_DOWNLOAD_LINK', '_blank')">
-                    <div class="addon-image">
-                        <img src="https://via.placeholder.com/300x200/FF9800/ffffff?text=Addon+5" alt="Addon 5">
-                    </div>
-                    <div class="addon-content">
-                        <h3>Magic & Spells</h3>
-                        <p>Cast powerful spells and enchantments</p>
-                        <div class="addon-tags">
-                            <span class="addon-tag">Magic</span>
-                            <span class="addon-tag">Fantasy</span>
-                        </div>
-                    </div>
-                    <div class="download-icon"></div>
-                </div>
-
-                <!-- Addon Card 6 -->
-                <div class="addon-card" onclick="window.open('ADDON_6_DOWNLOAD_LINK', '_blank')">
-                    <div class="addon-image">
-                        <img src="https://via.placeholder.com/300x200/00BCD4/ffffff?text=Addon+6" alt="Addon 6">
-                    </div>
-                    <div class="addon-content">
-                        <h3>Survival Plus</h3>
-                        <p>Enhanced survival experience</p>
-                        <div class="addon-tags">
-                            <span class="addon-tag">Survival</span>
-                            <span class="addon-tag">Hardcore</span>
-                        </div>
-                    </div>
-                    <div class="download-icon"></div>
-                </div>
+    <!-- Hack Client Page -->
+    <div id="hackClientPage" class="page">
+        <button class="back-button" onclick="goToPage('downloadsPage')"> Back</button>
+        <div class="container">
+            <div class="page-header">
+                <h1>Hack Clients</h1>
+                <p>Client tools and modified versions</p>
+            </div>
+            <div class="button-grid">
+                <a href="YOUR_CLIENT_LINK_1" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
+                    <div class="button-content"><h3>Client #1</h3><p>Stable release</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+                <a href="YOUR_CLIENT_LINK_2" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
+                    <div class="button-content"><h3>Client #2</h3><p>Custom features</p></div>
+                    <div class="button-arrow"></div>
+                </a>
+                <a href="YOUR_CLIENT_LINK_3" target="_blank" class="main-button">
+                    <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
+                    <div class="button-content"><h3>Client #3</h3><p>Experimental build</p></div>
+                    <div class="button-arrow"></div>
+                </a>
             </div>
         </div>
     </div>

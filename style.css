@@ -31,43 +31,15 @@ body {
     animation: float 10s infinite ease-in-out;
 }
 
-.cube:nth-child(1) {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-}
-
-.cube:nth-child(2) {
-    top: 20%;
-    right: 20%;
-    animation-delay: 2s;
-}
-
-.cube:nth-child(3) {
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 4s;
-}
-
-.cube:nth-child(4) {
-    bottom: 10%;
-    right: 10%;
-    animation-delay: 6s;
-}
-
-.cube:nth-child(5) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 8s;
-}
+.cube:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.cube:nth-child(2) { top: 20%; right: 20%; animation-delay: 2s; }
+.cube:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 4s; }
+.cube:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 6s; }
+.cube:nth-child(5) { top: 50%; left: 50%; animation-delay: 8s; }
 
 @keyframes float {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-50px) rotate(180deg);
-    }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(180deg); }
 }
 
 /* Page System */
@@ -76,22 +48,19 @@ body {
     min-height: 100vh;
     position: relative;
     z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .page.active {
     display: block;
+    opacity: 1;
     animation: fadeIn 0.5s ease;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .container {
@@ -115,12 +84,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 60px;
     margin: 0 auto 30px;
     box-shadow: 0 10px 40px rgba(102, 126, 234, 0.5);
-    animation: pulse 2s infinite;
     overflow: hidden;
     border: 4px solid rgba(102, 126, 234, 0.3);
+    animation: pulse 2s infinite;
 }
 
 .profile-pic img {
@@ -131,12 +99,8 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 .glitch {
@@ -179,7 +143,7 @@ body {
 }
 
 .main-button {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
     border: 2px solid rgba(102, 126, 234, 0.3);
     border-radius: 20px;
     padding: 30px;
@@ -215,9 +179,21 @@ body {
     box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
 }
 
-.button-icon {
-    font-size: 50px;
-    min-width: 60px;
+.button-image {
+    min-width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(102, 126, 234, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .button-content {
@@ -246,6 +222,7 @@ body {
     border-radius: 20px;
     padding: 40px;
     text-align: center;
+    animation: fadeIn 0.5s ease;
 }
 
 .about-section h2 {
@@ -288,10 +265,10 @@ body {
     font-size: 1.5em;
 }
 
-/* Addons Page */
+/* Page Header */
 .page-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     padding-top: 80px;
 }
 
@@ -309,12 +286,49 @@ body {
     font-size: 1.2em;
 }
 
-/* Addons Grid */
+/* Search Bar */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 20px 60px 20px 25px;
+    font-size: 1.1em;
+    background: rgba(102, 126, 234, 0.1);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 50px;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+#searchInput::placeholder {
+    color: #a0aec0;
+}
+
+.search-icon {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+/* Addons & Resource Grid */
 .addons-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
-    padding-bottom: 50px;
+    margin-bottom: 40px;
+    min-height: 400px;
 }
 
 .addon-card {
@@ -325,6 +339,12 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    animation: cardAppear 0.5s ease;
+}
+
+@keyframes cardAppear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .addon-card:hover {
@@ -393,28 +413,59 @@ body {
     opacity: 1;
 }
 
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0 20px;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    background: rgba(102, 126, 234, 0.2);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+}
+
+.page-btn:hover {
+    background: #667eea;
+    border-color: #667eea;
+    transform: scale(1.05);
+}
+
+.page-btn.active {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.page-info {
+    text-align: center;
+    color: #a0aec0;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #a0aec0;
+    font-size: 1.3em;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .glitch {
-        font-size: 2em;
-    }
-    
-    .button-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .addons-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .page-header h1 {
-        font-size: 2em;
-    }
-    
-    .back-button {
-        top: 10px;
-        left: 10px;
-        padding: 10px 20px;
-        font-size: 1em;
-    }
+    .glitch { font-size: 2em; }
+    .button-grid { grid-template-columns: 1fr; }
+    .addons-grid { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 2em; }
+    .back-button { top: 10px; left: 10px; padding: 10px 20px; font-size: 1em; }
+    .button-image { min-width: 60px; height: 60px; }
+    #searchInput { font-size: 1em; padding: 15px 50px 15px 20px; }
 }
