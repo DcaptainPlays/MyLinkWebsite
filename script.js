@@ -1,22 +1,27 @@
+const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
+const validAuth = "dcaptain123";
+const sessionKey = "dcaptain_access_granted";
+
 const urlParams = new URLSearchParams(window.location.search);
 const auth = urlParams.get("auth");
 
-const targetOrigin = "https://mylinkwebsite.pages.dev/?auth=dcaptain123";
+// Check if already allowed this session
+if (sessionStorage.getItem(sessionKey) === "true") {
+  showAccess();
+} else if (auth === validAuth) {
+  // Valid auth — grant access once
+  sessionStorage.setItem(sessionKey, "true");
 
-if (auth !== "dcaptain123") {
-  // Kung walang tamang auth, balik sa Linkvertise
-  window.location.href = "https://link-hub.net/1408907/57D6CaRirKtJ";
+  // Clean URL (remove ?auth=)
+  history.replaceState(null, "", window.location.pathname);
+
+  showAccess();
 } else {
-  // Kung tama, ipakita laman ng proxied site (galing sa worker)
-  document.getElementById("status").innerText = "Access granted ✅";
-  document.getElementById("content").classList.remove("hidden");
-  
-  // Optional: kung gusto mong i-load yung laman ng worker sa iframe
-  const iframe = document.createElement("iframe");
-  iframe.src = targetOrigin;
-  iframe.style.width = "100%";
-  iframe.style.height = "80vh";
-  iframe.style.border = "none";
-  document.body.appendChild(iframe);
+  // No access — send back to Linkvertise
+  window.location.href = linkvertiseURL;
 }
 
+function showAccess() {
+  document.getElementById("status").innerText = "Access granted ✅";
+  document.getElementById("content").classList.remove("hidden");
+}
