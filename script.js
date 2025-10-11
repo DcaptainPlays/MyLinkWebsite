@@ -1,3 +1,61 @@
+// ==================== SOUND EFFECTS ==================== 
+function playClickSound() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = 800;
+    oscillator.type = 'square';
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.1);
+}
+
+function playSuccessSound() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = 523.25; // C5
+    oscillator.type = 'sine';
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+    oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+    oscillator.stop(audioContext.currentTime + 0.5);
+}
+
+function playDeniedSound() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = 200;
+    oscillator.type = 'sawtooth';
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.5);
+    oscillator.stop(audioContext.currentTime + 0.5);
+}
+
 // ==================== SECURITY CHECK ==================== 
 const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
 const validAuth = "dcaptain123";
@@ -9,7 +67,7 @@ function isAuthenticated() {
     
     if (!authStatus || !authTimestamp) return false;
     
-    // Authentication expires after 10 minutes (instead of 1 second)
+    // Authentication expires after 10 minutes
     const now = new Date().getTime();
     const timePassed = now - parseInt(authTimestamp);
     if (timePassed > 600000) { // 10 min expiration
@@ -38,20 +96,31 @@ function checkAccess() {
 
     // Always check authentication status
     if (auth === validAuth) {
+        document.getElementById("securityStatus").innerText = "Access Granted! ✅";
+        playSuccessSound();
         setAuthenticated(true);
-        grantAccess();
+        setTimeout(() => { 
+            grantAccess(); 
+        }, 5000); // 5 second delay
     } else if (isAuthenticated()) {
-        grantAccess();
+        document.getElementById("securityStatus").innerText = "Welcome Back! ✅";
+        playSuccessSound();
+        setTimeout(() => { 
+            grantAccess(); 
+        }, 5000); // 5 second delay
     } else {
-        document.getElementById("securityStatus").innerText = "Redirecting to verification...";
+        document.getElementById("securityStatus").innerText = "Access Denied ❌";
+        playDeniedSound();
+        setTimeout(() => { 
+            document.getElementById("securityStatus").innerText = "Redirecting to verification...";
+        }, 3000);
         setTimeout(() => { 
             window.location.href = linkvertiseURL; 
-        }, 2000);
+        }, 5000); // 5 second delay
     }
 }
 
 function grantAccess() {
-    document.getElementById("securityStatus").innerText = "Access granted ✅";
     const container = document.querySelector('.security-container');
     
     container.classList.add('fade-out');
@@ -72,7 +141,7 @@ function grantAccess() {
         
         // Initialize history state for back button handling
         initializeBackButtonHandler();
-    }, 1200);
+    }, 1500);
 }
 
 // Clear authentication when user explicitly logs out
@@ -81,8 +150,7 @@ function logout() {
     window.location.href = linkvertiseURL;
 }
 
-// Check access only once on load (remove unnecessary repeat checks)
-// but revalidate when page/tab gains focus — not excessively.
+// Check access only once on load
 document.addEventListener("visibilitychange", function() {
     if (!document.hidden && !isAuthenticated()) {
         checkAccess();
@@ -417,7 +485,10 @@ function createCard(item) {
     const card = document.createElement('div');
     card.className = 'addon-card';
     card.id = item.id;
-    card.onclick = () => window.open(item.downloadLink, '_blank');
+    card.onclick = () => {
+        playClickSound();
+        window.open(item.downloadLink, '_blank');
+    };
     
     card.innerHTML = `
         <div class="addon-image">
@@ -439,7 +510,10 @@ function createCard(item) {
 function createNewsCard(item, type) {
     const card = document.createElement('div');
     card.className = 'news-card';
-    card.onclick = () => openNewsItem(item.id, type);
+    card.onclick = () => {
+        playClickSound();
+        openNewsItem(item.id, type);
+    };
     
     card.innerHTML = `
         <div class="news-card-image">
@@ -472,7 +546,7 @@ function openNewsItem(itemId, type) {
         const card = document.getElementById(itemId);
         if (card) {
             card.scrollIntoView({ behavior: "smooth", block: "center" });
-            card.style.outline = "3px solid #667eea";
+            card.style.outline = "3px solid #ff9800";
             setTimeout(() => card.style.outline = "none", 3000);
         }
     }, 500);
@@ -495,6 +569,7 @@ function updatePagination(totalPages, type) {
         btn.className = `page-btn${i === current ? ' active' : ''}`;
         btn.textContent = i;
         btn.onclick = () => {
+            playClickSound();
             if (isAddons) {
                 currentPage = i;
                 displayAddons();
