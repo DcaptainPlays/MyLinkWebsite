@@ -2,29 +2,49 @@
 const linkvertiseURL = "https://link-hub.net/1408907/57D6CaRirKtJ";
 const validAuth = "dcaptain123";
 
+// Check if user is authenticated
+function isAuthenticated() {
+    const authStatus = localStorage.getItem('auth_status');
+    const authTimestamp = localStorage.getItem('auth_timestamp');
+    
+    if (!authStatus || !authTimestamp) return false;
+    
+    // Authentication expires after 1 second (to force redirect on refresh)
+    const now = new Date().getTime();
+    const timePassed = now - parseInt(authTimestamp);
+    if (timePassed > 1000) { // 1 second expiration
+        localStorage.removeItem('auth_status');
+        localStorage.removeItem('auth_timestamp');
+        return false;
+    }
+    
+    return authStatus === 'verified';
+}
+
+// Set authentication status
+function setAuthenticated(status) {
+    if (status) {
+        localStorage.setItem('auth_status', 'verified');
+        localStorage.setItem('auth_timestamp', new Date().getTime().toString());
+    } else {
+        localStorage.removeItem('auth_status');
+        localStorage.removeItem('auth_timestamp');
+    }
+}
+
 function checkAccess() {
     const urlParams = new URLSearchParams(window.location.search);
     const auth = urlParams.get("auth");
 
+    // Always check authentication status
     if (auth === validAuth) {
-        document.getElementById("securityStatus").innerText = "Access granted ✅";
-        const container = document.querySelector('.security-container');
-        
-        // Add fade-out animation
-        container.classList.add('fade-out');
-        
-        setTimeout(() => {
-            document.getElementById("securityCheck").style.display = "none";
-            document.getElementById("mainContent").classList.remove("hidden");
-            document.getElementById("homePage").classList.add("active");
-            
-            // Initialize content
-            displayNewsAddons();
-            displayNewsResources();
-            displayNewsClients();
-            displayNewsApks();
-        }, 1500);
+        setAuthenticated(true);
+        grantAccess();
+    } else if (isAuthenticated()) {
+        // Only grant access if authentication hasn't expired
+        grantAccess();
     } else {
+        // Redirect to Linkvertise if not authenticated
         document.getElementById("securityStatus").innerText = "Redirecting to verification...";
         setTimeout(() => { 
             window.location.href = linkvertiseURL; 
@@ -32,13 +52,54 @@ function checkAccess() {
     }
 }
 
+function grantAccess() {
+    document.getElementById("securityStatus").innerText = "Access granted ✅";
+    const container = document.querySelector('.security-container');
+    
+    // Add fade-out animation
+    container.classList.add('fade-out');
+    
+    setTimeout(() => {
+        document.getElementById("securityCheck").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+        document.getElementById("homePage").classList.add("active");
+        // Clean URL without affecting authentication
+        history.replaceState(null, "", window.location.pathname);
+        
+        // Initialize content
+        displayNewsAddons();
+        displayNewsResources();
+        displayNewsClients();
+        displayNewsApks();
+    }, 1500);
+}
+
+// Clear authentication when user explicitly logs out
+function logout() {
+    setAuthenticated(false);
+    window.location.href = linkvertiseURL;
+}
+
+// Add event listeners for page visibility and focus changes
+document.addEventListener("visibilitychange", function() {
+    if (!document.hidden) {
+        // Page becomes visible again (tab focus)
+        checkAccess();
+    }
+});
+
+window.addEventListener("focus", function() {
+    // Window regains focus
+    checkAccess();
+});
+
+// Clear authentication on page refresh/reload
+window.addEventListener('beforeunload', function() {
+    setAuthenticated(false);
+});
+
 // Initialize security check when page loads
 window.addEventListener("DOMContentLoaded", checkAccess);
-
-// Prevent split-screen if opened inside Linkvertise frame
-if (window.top !== window.self) {
-    window.top.location = window.location.href;
-}
 
 // ==================== DATA ====================
 const allAddons = [
@@ -75,6 +136,54 @@ const allAddons = [
         description: "Advanced features for experienced players.",
         image: "https://i.imgur.com/7wpie0Y.jpeg",
         tags: ["Advanced"],
+        downloadLink: "#"
+    }
+];
+
+const allResources = [
+    {
+        name: "HD Textures Pack",
+        description: "High-definition textures for a better look.",
+        image: "https://i.imgur.com/SBU16HK.jpeg",
+        tags: ["Textures", "HD"],
+        downloadLink: "#"
+    },
+    {
+        name: "PvP Resource Pack",
+        description: "Optimized textures for PvP gameplay.",
+        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        tags: ["PvP", "Performance"],
+        downloadLink: "#"
+    },
+    {
+        name: "Fantasy Theme Pack",
+        description: "Medieval fantasy themed textures.",
+        image: "https://i.imgur.com/YHoAhki.png",
+        tags: ["Fantasy", "Theme"],
+        downloadLink: "#"
+    }
+];
+
+const hackClients = [
+    {
+        name: "Toolbox Pro",
+        description: "Advanced Minecraft client with many features.",
+        image: "https://i.imgur.com/7wpie0Y.jpeg",
+        tags: ["Client", "Tools"],
+        downloadLink: "#"
+    },
+    {
+        name: "Hacked Client X",
+        description: "Feature-rich client for advanced users.",
+        image: "https://i.imgur.com/OlYW3ka.png",
+        tags: ["Advanced", "Hacks"],
+        downloadLink: "#"
+    },
+    {
+        name: "Mod Menu Plus",
+        description: "Extensive mod menu with custom features.",
+        image: "https://i.imgur.com/OlYW3ka.png",
+        tags: ["Mods", "Menu"],
         downloadLink: "#"
     }
 ];
@@ -344,3 +453,12 @@ function goToLastPage(type) {
     }
     window.scrollTo(0, 0);
 }
+
+// Initialize everything when the page loads
+window.addEventListener("DOMContentLoaded", function() {
+    checkAccess();
+    displayNewsAddons();
+    displayNewsResources();
+    displayNewsClients();
+    displayNewsApks();
+});
