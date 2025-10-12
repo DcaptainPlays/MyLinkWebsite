@@ -6,42 +6,15 @@ function playClickSound() {
 }
 
 function playSuccessSound() {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.frequency.value = 523.25; // C5
-    oscillator.type = 'sine';
-    
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-    
-    oscillator.start(audioContext.currentTime);
-    oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
-    oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
-    oscillator.stop(audioContext.currentTime + 0.5);
+    const audio = new Audio('https://DcaptainPlays.github.io/MyLinkWebsite/sounds/successfullaccess.mp3');
+    audio.volume = 0.6;
+    audio.play().catch(e => console.log('Audio play failed:', e));
 }
 
 function playDeniedSound() {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.frequency.value = 200;
-    oscillator.type = 'sawtooth';
-    
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-    
-    oscillator.start(audioContext.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.5);
-    oscillator.stop(audioContext.currentTime + 0.5);
+    const audio = new Audio('https://DcaptainPlays.github.io/MyLinkWebsite/sounds/break.mp3');
+    audio.volume = 0.6;
+    audio.play().catch(e => console.log('Audio play failed:', e));
 }
 
 // ==================== SECURITY CHECK ==================== 
@@ -84,23 +57,27 @@ function checkAccess() {
 
     // Always check authentication status
     if (auth === validAuth) {
-        document.getElementById("securityStatus").innerText = "Access Granted! ✅";
+        document.getElementById("securityStatus").innerText = "Access Granted! Welcome to DcaptainPlays Hub! ✅";
+        document.getElementById("securityStatus").style.color = "#AAFFAA";
         playSuccessSound();
         setAuthenticated(true);
         setTimeout(() => { 
             grantAccess(); 
         }, 5000); // 5 second delay
     } else if (isAuthenticated()) {
-        document.getElementById("securityStatus").innerText = "Welcome Back! ✅";
+        document.getElementById("securityStatus").innerText = "Welcome Back to DcaptainPlays Hub! ✅";
+        document.getElementById("securityStatus").style.color = "#AAFFAA";
         playSuccessSound();
         setTimeout(() => { 
             grantAccess(); 
         }, 5000); // 5 second delay
     } else {
         document.getElementById("securityStatus").innerText = "Access Denied ❌";
+        document.getElementById("securityStatus").style.color = "#FFAAAA";
         playDeniedSound();
         setTimeout(() => { 
-            document.getElementById("securityStatus").innerText = "Redirecting to verification...";
+            document.getElementById("securityStatus").innerText = "You need to verify through Linkvertise...";
+            document.getElementById("securityStatus").style.color = "#FFCCAA";
         }, 3000);
         setTimeout(() => { 
             window.location.href = linkvertiseURL; 
@@ -633,4 +610,3 @@ function goToLastPage(type) {
 window.addEventListener("DOMContentLoaded", function() {
     checkAccess();
 });
-
