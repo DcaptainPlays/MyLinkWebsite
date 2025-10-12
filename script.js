@@ -23,8 +23,8 @@ const validAuth = "dcaptain123";
 
 // Check if user is authenticated
 function isAuthenticated() {
-    const authStatus = localStorage.getItem('auth_status');
-    const authTimestamp = localStorage.getItem('auth_timestamp');
+    const authStatus = sessionStorage.getItem('auth_status');
+    const authTimestamp = sessionStorage.getItem('auth_timestamp');
     
     if (!authStatus || !authTimestamp) return false;
     
@@ -32,8 +32,8 @@ function isAuthenticated() {
     const now = new Date().getTime();
     const timePassed = now - parseInt(authTimestamp);
     if (timePassed > 600000) { // 10 min expiration
-        localStorage.removeItem('auth_status');
-        localStorage.removeItem('auth_timestamp');
+        sessionStorage.removeItem('auth_status');
+        sessionStorage.removeItem('auth_timestamp');
         return false;
     }
     
@@ -43,11 +43,11 @@ function isAuthenticated() {
 // Set authentication status
 function setAuthenticated(status) {
     if (status) {
-        localStorage.setItem('auth_status', 'verified');
-        localStorage.setItem('auth_timestamp', new Date().getTime().toString());
+        sessionStorage.setItem('auth_status', 'verified');
+        sessionStorage.setItem('auth_timestamp', new Date().getTime().toString());
     } else {
-        localStorage.removeItem('auth_status');
-        localStorage.removeItem('auth_timestamp');
+        sessionStorage.removeItem('auth_status');
+        sessionStorage.removeItem('auth_timestamp');
     }
 }
 
@@ -191,12 +191,21 @@ function navigateBackFromSubPage(currentPageId) {
 }
 
 // ==================== DATA ====================
+// ALL ADDONS (for the full addons page)
 const allAddons = [
+    {
+        id: "waterslide-addon",
+        name: "Waterslide Addon",
+        description: "Amazing waterslide mechanics with custom physics.",
+        image: "https://i.imgur.com/YHoAhki.png",
+        tags: ["Fun", "Physics"],
+        downloadLink: "#"
+    },
     {
         id: "snake-addon-pack",
         name: "Snake Addon Pack",
         description: "Adds realistic snakes with animations and AI behavior.",
-        image: "https://i.imgur.com/YHoAhki.png",
+        image: "https://i.imgur.com/q0kFxLH.jpeg",
         tags: ["Animals", "Mobs"],
         downloadLink: "#"
     },
@@ -204,7 +213,7 @@ const allAddons = [
         id: "epic-weapons",
         name: "Epic Weapons Arsenal",
         description: "Powerful weapons with custom models.",
-        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        image: "https://i.imgur.com/SBU16HK.jpeg",
         tags: ["Weapons", "PvP"],
         downloadLink: "#"
     },
@@ -212,7 +221,7 @@ const allAddons = [
         id: "dragon-mount-plus",
         name: "Dragon Mount Plus",
         description: "Ride dragons with custom animations and abilities.",
-        image: "https://i.imgur.com/SBU16HK.jpeg",
+        image: "https://i.imgur.com/VniYVtv.png",
         tags: ["Mounts", "Animation"],
         downloadLink: "#"
     },
@@ -220,20 +229,41 @@ const allAddons = [
         id: "enhanced-tools",
         name: "Enhanced Tools Pack",
         description: "Better tools with special abilities.",
-        image: "https://i.imgur.com/VniYVtv.png",
-        tags: ["Tools"],
-        downloadLink: "#"
-    },
-    {
-        id: "hacked-client-x",
-        name: "Hacked Client X",
-        description: "Advanced features for experienced players.",
         image: "https://i.imgur.com/7wpie0Y.jpeg",
-        tags: ["Advanced"],
+        tags: ["Tools"],
         downloadLink: "#"
     }
 ];
 
+// FEATURED ADDONS (customizable - shows on main page news)
+const featuredAddons = [
+    {
+        id: "waterslide-addon",
+        name: "Waterslide Addon",
+        description: "Amazing waterslide mechanics with custom physics.",
+        image: "https://i.imgur.com/YHoAhki.png",
+        tags: ["Fun", "Physics"],
+        downloadLink: "#"
+    },
+    {
+        id: "snake-addon-pack",
+        name: "Snake Addon Pack",
+        description: "Adds realistic snakes with animations and AI behavior.",
+        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        tags: ["Animals", "Mobs"],
+        downloadLink: "#"
+    },
+    {
+        id: "epic-weapons",
+        name: "Epic Weapons Arsenal",
+        description: "Powerful weapons with custom models.",
+        image: "https://i.imgur.com/SBU16HK.jpeg",
+        tags: ["Weapons", "PvP"],
+        downloadLink: "#"
+    }
+];
+
+// ALL RESOURCE PACKS (for the full resource page)
 const allResources = [
     {
         id: "hd-textures",
@@ -261,6 +291,35 @@ const allResources = [
     }
 ];
 
+// FEATURED RESOURCE PACKS (customizable - shows on main page news)
+const featuredResources = [
+    {
+        id: "hd-textures",
+        name: "HD Textures Pack",
+        description: "High-definition textures for a better look.",
+        image: "https://i.imgur.com/SBU16HK.jpeg",
+        tags: ["Textures", "HD"],
+        downloadLink: "#"
+    },
+    {
+        id: "pvp-pack",
+        name: "PvP Resource Pack",
+        description: "Optimized textures for PvP gameplay.",
+        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        tags: ["PvP", "Performance"],
+        downloadLink: "#"
+    },
+    {
+        id: "fantasy-theme",
+        name: "Fantasy Theme Pack",
+        description: "Medieval fantasy themed textures.",
+        image: "https://i.imgur.com/YHoAhki.png",
+        tags: ["Fantasy", "Theme"],
+        downloadLink: "#"
+    }
+];
+
+// HACK CLIENTS
 const hackClients = [
     {
         id: "toolbox-pro",
@@ -288,7 +347,56 @@ const hackClients = [
     }
 ];
 
+// FEATURED HACK CLIENTS (customizable - shows on main page news)
+const featuredClients = [
+    {
+        id: "toolbox-pro",
+        name: "Toolbox Pro",
+        description: "Advanced Minecraft client with many features.",
+        image: "https://i.imgur.com/7wpie0Y.jpeg",
+        tags: ["Client", "Tools"],
+        downloadLink: "#"
+    },
+    {
+        id: "hacked-client-x",
+        name: "Hacked Client X",
+        description: "Feature-rich client for advanced users.",
+        image: "https://i.imgur.com/OlYW3ka.png",
+        tags: ["Advanced", "Hacks"],
+        downloadLink: "#"
+    },
+    {
+        id: "mod-menu-plus",
+        name: "Mod Menu Plus",
+        description: "Extensive mod menu with custom features.",
+        image: "https://i.imgur.com/OlYW3ka.png",
+        tags: ["Mods", "Menu"],
+        downloadLink: "#"
+    }
+];
+
+// APKS
 const apks = [
+    {
+        id: "minecraft-v121",
+        name: "Minecraft v1.21",
+        description: "Latest stable build with new features.",
+        image: "https://i.imgur.com/MboC4Fc.png",
+        tags: ["Stable"],
+        downloadLink: "#"
+    },
+    {
+        id: "mc-modded",
+        name: "Minecraft Modded",
+        description: "Performance optimized version.",
+        image: "https://i.imgur.com/MboC4Fc.png",
+        tags: ["Modded"],
+        downloadLink: "#"
+    }
+];
+
+// FEATURED APKS (customizable - shows on main page news)
+const featuredApks = [
     {
         id: "minecraft-v121",
         name: "Minecraft v1.21",
@@ -414,11 +522,11 @@ function displayResources() {
     updatePagination(totalPages, 'resources');
 }
 
-// News display functions
+// News display functions - USES FEATURED ARRAYS
 function displayNewsAddons() {
     const grid = document.getElementById('newAddonsGrid');
     grid.innerHTML = '';
-    allAddons.slice(0, 3).forEach(addon => {
+    featuredAddons.forEach(addon => {
         grid.appendChild(createNewsCard(addon, 'addon'));
     });
 }
@@ -426,7 +534,7 @@ function displayNewsAddons() {
 function displayNewsResources() {
     const grid = document.getElementById('newResourcesGrid');
     grid.innerHTML = '';
-    allResources.slice(0, 3).forEach(resource => {
+    featuredResources.forEach(resource => {
         grid.appendChild(createNewsCard(resource, 'resource'));
     });
 }
@@ -434,7 +542,7 @@ function displayNewsResources() {
 function displayNewsClients() {
     const grid = document.getElementById('newClientsGrid');
     grid.innerHTML = '';
-    hackClients.slice(0, 3).forEach(client => {
+    featuredClients.forEach(client => {
         grid.appendChild(createNewsCard(client, 'client'));
     });
 }
@@ -442,7 +550,7 @@ function displayNewsClients() {
 function displayNewsApks() {
     const grid = document.getElementById('newApksGrid');
     grid.innerHTML = '';
-    apks.slice(0, 3).forEach(apk => {
+    featuredApks.forEach(apk => {
         grid.appendChild(createNewsCard(apk, 'apk'));
     });
 }
@@ -502,13 +610,22 @@ function createNewsCard(item, type) {
 function openNewsItem(itemId, type) {
     let pageId = '';
     switch (type) {
-        case 'addon': pageId = 'addonsPage'; break;
-        case 'resource': pageId = 'resourcePage'; break;
-        case 'client': pageId = 'hackClientPage'; break;
-        case 'apk': pageId = 'apkPage'; break;
+        case 'addon': 
+            pageId = 'addonsPage'; 
+            break;
+        case 'resource': 
+            pageId = 'resourcePage'; 
+            break;
+        case 'client': 
+            pageId = 'hackClientPage'; 
+            break;
+        case 'apk': 
+            pageId = 'apkPage'; 
+            break;
     }
 
     goToPage(pageId);
+    
     setTimeout(() => {
         const card = document.getElementById(itemId);
         if (card) {
