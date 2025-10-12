@@ -175,6 +175,7 @@ function navigateBackFromSubPage(currentPageId) {
         'aboutPage': 'homePage',
         'socialsPage': 'homePage',
         'downloadsPage': 'homePage',
+        'installationPage': 'homePage',
         'addonsPage': 'downloadsPage',
         'resourcePage': 'downloadsPage',
         'apkPage': 'downloadsPage',
