@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DcaptainPlays - Minecraft Hub</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Open Graph Meta Tags for Link Previews -->
+    <meta property="og:title" content="DcaptainPlays - Minecraft Hub">
+    <meta property="og:description" content="Developer and Minecraft addon giver for free. Check out addons, resource packs, and more!">
+    <meta property="og:image" content="https://i.imgur.com/PK4AHoX.jpeg">
+    <meta property="og:url" content="https://DcaptainPlays.github.io/MyLinkWebsite/">
+    <meta property="og:type" content="website">
+
     <script>
         // Prevent split-screen if opened inside Linkvertise frame
         if (window.top !== window.self) {
@@ -49,13 +57,11 @@
         <div class="particle" style="top: 15%; left: 65%;"></div>
     </div>
 
-
     <!-- Main Website Content (Hidden until verified) -->
     <div id="mainContent" class="hidden">
-        <!-- Main Home Page -->
+        <!-- Home Page -->
         <div id="homePage" class="page">
             <div class="container">
-                <!-- Profile Section -->
                 <div class="profile-section">
                     <div class="profile-pic">
                         <img src="https://i.imgur.com/PK4AHoX.jpeg" alt="DcaptainPlays Profile">
@@ -69,7 +75,6 @@
                     </div>
                 </div>
 
-                <!-- Main Navigation Buttons -->
                 <div class="button-grid">
                     <div class="main-button" onclick="playClickSound(); goToPage('socialsPage')">
                         <div class="button-image">
@@ -105,40 +110,32 @@
                     </div>
                 </div>
 
-                <!-- NEWS SECTIONS -->
+                <!-- News Sections -->
                 <div class="news-section">
                     <div class="section-badge new">NEW!!</div>
                     <h2 class="section-title">Latest Addons</h2>
-                    <div class="news-grid" id="newAddonsGrid">
-                        <!-- Latest addon news will be added here -->
-                    </div>
+                    <div class="news-grid" id="newAddonsGrid"></div>
                     <button class="see-more-btn" onclick="playClickSound(); goToPage('addonsPage')">See More Addons</button>
                 </div>
 
                 <div class="news-section">
                     <div class="section-badge">NEW!</div>
                     <h2 class="section-title">Resource Packs</h2>
-                    <div class="news-grid" id="newResourcesGrid">
-                        <!-- Latest resource pack news will be added here -->
-                    </div>
+                    <div class="news-grid" id="newResourcesGrid"></div>
                     <button class="see-more-btn" onclick="playClickSound(); goToPage('resourcePage')">See More Packs</button>
                 </div>
 
                 <div class="news-section">
                     <div class="section-badge">POPULAR</div>
                     <h2 class="section-title">Hack Clients</h2>
-                    <div class="news-grid" id="newClientsGrid">
-                        <!-- Latest hack client news will be added here -->
-                    </div>
+                    <div class="news-grid" id="newClientsGrid"></div>
                     <button class="see-more-btn" onclick="playClickSound(); goToPage('hackClientPage')">See All Clients</button>
                 </div>
 
                 <div class="news-section">
                     <div class="section-badge">UPDATED</div>
                     <h2 class="section-title">Minecraft APKs</h2>
-                    <div class="news-grid" id="newApksGrid">
-                        <!-- Latest APK news will be added here -->
-                    </div>
+                    <div class="news-grid" id="newApksGrid"></div>
                     <button class="see-more-btn" onclick="playClickSound(); goToPage('apkPage')">See All APKs</button>
                 </div>
             </div>
@@ -178,6 +175,7 @@
             </footer>
         </div>
 
+        <!-- Add the rest of your pages exactly as before (About, Socials, Downloads, Addons, Resource Packs, APKs, Hack Clients) -->
         <!-- About Page -->
         <div id="aboutPage" class="page">
             <button class="back-button" onclick="playClickSound(); goToHome()">← Back</button>
