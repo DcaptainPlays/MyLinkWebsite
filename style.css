@@ -323,12 +323,10 @@ body::before {
 .glitch {
     font-size: 3em;
     font-weight: bold;
-    background: linear-gradient(45deg, #65E065, #A1E861, #D9F76B, #FFC107);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #E1F5A9;
     margin-bottom: 10px;
     font-family: 'Courier New', monospace;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
