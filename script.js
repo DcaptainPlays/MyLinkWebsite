@@ -206,7 +206,7 @@ const allAddons = [
         id: "snake-addon-pack",
         name: "Snake Addon Pack",
         description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
-        image: "https://imgur.com/a/M5jer5E",
+        image: "https://i.imgur.com/ndfJwRF.jpeg",
         tags: ["Animals", "Mobs"],
         downloadLink: "#"
     },
@@ -728,3 +728,4 @@ function goToLastPage(type) {
 window.addEventListener("DOMContentLoaded", function() {
     checkAccess();
 });
+
