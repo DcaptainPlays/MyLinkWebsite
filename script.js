@@ -233,6 +233,22 @@ const allAddons = [
         image: "https://i.imgur.com/fLe8M0U.png",
         tags: ["Animation", "Player", "Emotes", "Movement", "Realistic", "Gestures", "Actions", "Expressions"],
         downloadLink: "#"
+    },
+    {
+        id: "RealisticBiome",
+        name: "Realistic Biomes Addon",
+        description: "Transform your world with beautiful custom skies, dynamic weather, stunning visual effects, and immersive audio.",
+        image: "https://i.imgur.com/gJ2RB6d.jpeg",
+        tags: ["Realistic", "Biomes", "Nature", "Environment", "World", "Terrain", "Customisable", "Exploration"],
+        downloadLink: "#"
+    },
+    {
+        id: "RestaurantSim",
+        name: "Restaurant Sim: Head Chef",
+        description: "Run the best restaurant in town in this action-packed minigame! The customers are hungry; prepare and serve the food before time runs out! Can you leave behind a 5-star legacy?",
+        image: "https://i.imgur.com/Rqkk6kU.jpeg",
+        tags: ["Cooking", "Restaurant", "Chef", "Food", "Simulation", "Job", "Kitchen", "Roleplay"],
+        downloadLink: "#"
     }
 ];
 
