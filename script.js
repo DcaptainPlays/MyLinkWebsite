@@ -205,8 +205,8 @@ const allAddons = [
     {
         id: "snake-addon-pack",
         name: "Snake Addon Pack",
-        description: "Adds realistic snakes with animations and AI behavior.",
-        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
+        image: "https://imgur.com/a/M5jer5E",
         tags: ["Animals", "Mobs"],
         downloadLink: "#"
     },
