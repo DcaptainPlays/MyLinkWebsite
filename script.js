@@ -197,18 +197,9 @@ const allAddons = [
     {
         id: "actionsandstuff-addon",
         name: "Actions & Stuffs 1.6",
-        description: `The Animation Pack You Didn't Know You Needed:
-Bring your world to life with new animations, particles, textures, and more!
-
-- Player Animations (1st & 3rd Person)
-- New & Improved Mob Animations
-- 3D Item Models
-- Custom Armour
-- A Complete & Faithful Texture Overhaul
-- Compatible with Vanilla textures, or your own texture packs
-- So much more!`,
+        description: "The Animation Pack You Didn't Know You Needed:\nBring your world to life with new animations, particles, textures, and more!",
         image: "https://i.imgur.com/ugi1Tdz.jpegg",
-        tags: ["Fun", "Physics"],
+        tags: ["Animation", "Physics", "Combat", "Player", "Particles", "Textures", "Movement"],
         downloadLink: "#"
     },
     {
@@ -216,7 +207,7 @@ Bring your world to life with new animations, particles, textures, and more!
         name: "SpongeBob SquarePants Addon",
         description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
         image: "https://i.imgur.com/ndfJwRF.jpeg",
-        tags: ["Animals", "Mobs"],
+        tags: ["Cartoons", "Spongebob", "TV", "Textures", "Animals", "Mobs"],
         downloadLink: "#"
     },
     {
@@ -250,18 +241,9 @@ const featuredAddons = [
     {
         id: "actionsandstuffs-addon",
         name: "Actions & Stuffs 1.6",
-        description: `The Animation Pack You Didn't Know You Needed:
-Bring your world to life with new animations, particles, textures, and more!
-
-- Player Animations (1st & 3rd Person)
-- New & Improved Mob Animations
-- 3D Item Models
-- Custom Armour
-- A Complete & Faithful Texture Overhaul
-- Compatible with Vanilla textures, or your own texture packs
-- So much more!`,
+        description: "The Animation Pack You Didn't Know You Needed:\nBring your world to life with new animations, particles, textures, and more!",
         image: "https://i.imgur.com/ugi1Tdz.jpeg",
-        tags: ["Fun", "Physics"],
+        tags: ["Animation", "Physics", "Combat", "Player", "Particles", "Textures", "Movement"],
         downloadLink: "#"
     },
     {
@@ -269,7 +251,7 @@ Bring your world to life with new animations, particles, textures, and more!
         name: "SpongeBob SquarePants Addon",
         description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
         image: "https://i.imgur.com/ndfJwRF.jpeg",
-        tags: ["Animals", "Mobs"],
+        tags: ["Cartoons", "Spongebob", "TV", "Textures", "Animals", "Mobs"],
         downloadLink: "#"
     },
     {
