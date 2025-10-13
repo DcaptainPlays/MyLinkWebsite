@@ -203,8 +203,8 @@ const allAddons = [
         downloadLink: "#"
     },
     {
-        id: "snake-addon-pack",
-        name: "Snake Addon Pack",
+        id: "spongebob-addon-pack",
+        name: "SpongeBob SquarePants Addon",
         description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
         image: "https://i.imgur.com/ndfJwRF.jpeg",
         tags: ["Animals", "Mobs"],
@@ -247,10 +247,10 @@ const featuredAddons = [
         downloadLink: "#"
     },
     {
-        id: "snake-addon-pack",
-        name: "Snake Addon Pack",
-        description: "Adds realistic snakes with animations and AI behavior.",
-        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        id: "spongebob-addon-pack",
+        name: "SpongeBob SquarePants Addon",
+        description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
+        image: "https://i.imgur.com/ndfJwRF.jpeg",
         tags: ["Animals", "Mobs"],
         downloadLink: "#"
     },
@@ -728,4 +728,3 @@ function goToLastPage(type) {
 window.addEventListener("DOMContentLoaded", function() {
     checkAccess();
 });
-
