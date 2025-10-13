@@ -211,27 +211,27 @@ const allAddons = [
         downloadLink: "#"
     },
     {
-        id: "epic-weapons",
-        name: "Epic Weapons Arsenal",
-        description: "Powerful weapons with custom models.",
-        image: "https://i.imgur.com/SBU16HK.jpeg",
-        tags: ["Weapons", "PvP"],
+        id: "demon-slayer-addon",
+        name: "Demon Slayer Addon",
+        description: "Experience the world of Demon Slayer in Minecraft — master breathing techniques, wield Nichirin swords, and battle powerful demons with stunning animations and abilities. By Dapy",
+        image: "https://i.imgur.com/TBqPiAr.jpeg",
+        tags: ["Anime", "Demon", "Slayer", "Weapons", "Breathing", "Swords", "Powers", "Characters"],
         downloadLink: "#"
     },
     {
-        id: "dragon-mount-plus",
-        name: "Dragon Mount Plus",
-        description: "Ride dragons with custom animations and abilities.",
-        image: "https://i.imgur.com/VniYVtv.png",
-        tags: ["Mounts", "Animation"],
+        id: "realism-craft",
+        name: "Realism Craft",
+        description: "Experience a new game with Realism Craft® 2.1: Custom world-gen, full texture-pack, new mobs, items & blocks.",
+        image: "https://i.imgur.com/6GjSvQ5.png",
+        tags: ["Realistic", "Textures", "Graphics", "Environment", "Lighting", "Shadows", "Nature", "HD"],
         downloadLink: "#"
     },
     {
-        id: "enhanced-tools",
-        name: "Enhanced Tools Pack",
-        description: "Better tools with special abilities.",
-        image: "https://i.imgur.com/7wpie0Y.jpeg",
-        tags: ["Tools"],
+        id: "player-animations",
+        name: "Player Animations Addon",
+        description: "Player Animations Add-On adds smooth and realistic animations to YOUR world! Enhance your experience with 40+ immersive player animations!",
+        image: "https://i.imgur.com/fLe8M0U.png",
+        tags: ["Animation", "Player", "Emotes", "Movement", "Realistic", "Gestures", "Actions", "Expressions"],
         downloadLink: "#"
     }
 ];
@@ -255,11 +255,11 @@ const featuredAddons = [
         downloadLink: "#"
     },
     {
-        id: "epic-weapons",
-        name: "Epic Weapons Arsenal",
-        description: "Powerful weapons with custom models.",
-        image: "https://i.imgur.com/SBU16HK.jpeg",
-        tags: ["Weapons", "PvP"],
+        id: "demon-slayer-addon",
+        name: "Demon Slayer Addon",
+        description: "Experience the world of Demon Slayer in Minecraft — master breathing techniques, wield Nichirin swords, and battle powerful demons with stunning animations and abilities. By Dapy",
+        image: "https://i.imgur.com/TBqPiAr.jpeg",
+        tags: ["Anime", "Demon", "Slayer", "Weapons", "Breathing", "Swords", "Powers", "Characters"],
         downloadLink: "#"
     }
 ];
