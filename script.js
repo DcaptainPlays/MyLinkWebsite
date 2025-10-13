@@ -197,15 +197,7 @@ const allAddons = [
     {
         id: "actionsandstuff-addon",
         name: "Actions & Stuffs 1.6",
-        description: "The Animation Pack You Didn't Know You Needed: Bring your world to life with new animations, particles, textures, and more!
-
-- Player Animations (1st & 3rd Person)
-- New & Improved Mob Animations
-- 3D Item Models
-- Custom Armour
-- A Complete & Faithful Texture Overhaul
-- Compatible with Vanilla textures, or your own texture packs
-- So much more!",
+        description: "The Animation Pack You Didn't Know You Needed:\nBring your world to life with new animations, particles, textures, and more!\n\n- Player Animations (1st & 3rd Person)\n- New & Improved Mob Animations\n- 3D Item Models\n- Custom Armour\n- A Complete & Faithful Texture Overhaul\n- Compatible with Vanilla textures, or your own texture packs\n- So much more!",
         image: "https://i.imgur.com/ugi1Tdz.jpegg",
         tags: ["Fun", "Physics"],
         downloadLink: "#"
@@ -249,15 +241,7 @@ const featuredAddons = [
     {
         id: "actionsandstuffs-addon",
         name: "Actions & Stuffs 1.6",
-        description: "The Animation Pack You Didn't Know You Needed: Bring your world to life with new animations, particles, textures, and more!
-
-- Player Animations (1st & 3rd Person)
-- New & Improved Mob Animations
-- 3D Item Models
-- Custom Armour
-- A Complete & Faithful Texture Overhaul
-- Compatible with Vanilla textures, or your own texture packs
-- So much more!",
+        description: "The Animation Pack You Didn't Know You Needed:\nBring your world to life with new animations, particles, textures, and more!\n\n- Player Animations (1st & 3rd Person)\n- New & Improved Mob Animations\n- 3D Item Models\n- Custom Armour\n- A Complete & Faithful Texture Overhaul\n- Compatible with Vanilla textures, or your own texture packs\n- So much more!",
         image: "https://i.imgur.com/ugi1Tdz.jpeg",
         tags: ["Fun", "Physics"],
         downloadLink: "#"
