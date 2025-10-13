@@ -195,10 +195,18 @@ function navigateBackFromSubPage(currentPageId) {
 // ALL ADDONS (for the full addons page)
 const allAddons = [
     {
-        id: "waterslide-addon",
-        name: "Waterslide Addon",
-        description: "Amazing waterslide mechanics with custom physics.",
-        image: "https://i.imgur.com/YHoAhki.png",
+        id: "actionsandstuff-addon",
+        name: "Actions & Stuffs 1.6",
+        description: "The Animation Pack You Didn't Know You Needed: Bring your world to life with new animations, particles, textures, and more!
+
+- Player Animations (1st & 3rd Person)
+- New & Improved Mob Animations
+- 3D Item Models
+- Custom Armour
+- A Complete & Faithful Texture Overhaul
+- Compatible with Vanilla textures, or your own texture packs
+- So much more!",
+        image: "https://i.imgur.com/ugi1Tdz.jpegg",
         tags: ["Fun", "Physics"],
         downloadLink: "#"
     },
@@ -239,10 +247,18 @@ const allAddons = [
 // FEATURED ADDONS (customizable - shows on main page news)
 const featuredAddons = [
     {
-        id: "waterslide-addon",
-        name: "Waterslide Addon",
-        description: "Amazing waterslide mechanics with custom physics.",
-        image: "https://i.imgur.com/YHoAhki.png",
+        id: "actionsandstuffs-addon",
+        name: "Actions & Stuffs 1.6",
+        description: "The Animation Pack You Didn't Know You Needed: Bring your world to life with new animations, particles, textures, and more!
+
+- Player Animations (1st & 3rd Person)
+- New & Improved Mob Animations
+- 3D Item Models
+- Custom Armour
+- A Complete & Faithful Texture Overhaul
+- Compatible with Vanilla textures, or your own texture packs
+- So much more!",
+        image: "https://i.imgur.com/ugi1Tdz.jpeg",
         tags: ["Fun", "Physics"],
         downloadLink: "#"
     },
