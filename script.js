@@ -200,7 +200,7 @@ const allAddons = [
         description: "The Animation Pack You Didn't Know You Needed:\nBring your world to life with new animations, particles, textures, and more!",
         image: "https://i.imgur.com/ugi1Tdz.jpegg",
         tags: ["Animation", "Physics", "Combat", "Player", "Particles", "Textures", "Movement"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/k37q493dltmyrzt/%2528LEAK%2529_Actions_And_Stuff_1.6_by_DcaptainPlays.mcpack/file"
     },
     {
         id: "spongebob-addon-pack",
@@ -208,7 +208,7 @@ const allAddons = [
         description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
         image: "https://i.imgur.com/ndfJwRF.jpeg",
         tags: ["Cartoons", "Spongebob", "TV", "Textures", "Animals", "Mobs"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/cvg847ai7vykf7a/%2528LEAK%2529_Spongebob_Addon_By_DcaptainPlays.mcaddon/file"
     },
     {
         id: "demon-slayer-addon",
@@ -216,7 +216,7 @@ const allAddons = [
         description: "Experience the world of Demon Slayer in Minecraft — master breathing techniques, wield Nichirin swords, and battle powerful demons with stunning animations and abilities. By Dapy",
         image: "https://i.imgur.com/TBqPiAr.jpeg",
         tags: ["Anime", "Demon", "Slayer", "Weapons", "Breathing", "Swords", "Powers", "Characters"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/cnq8bwxzd9ah224/%2528NOT_A_LEAK%2529_Mules-Slayer-V1_W_Dapy_for_making_it_Free.mcaddon/file"
     },
     {
         id: "realism-craft",
@@ -224,7 +224,7 @@ const allAddons = [
         description: "Experience a new game with Realism Craft® 2.1: Custom world-gen, full texture-pack, new mobs, items & blocks.",
         image: "https://i.imgur.com/6GjSvQ5.png",
         tags: ["Realistic", "Textures", "Graphics", "Environment", "Lighting", "Shadows", "Nature", "HD"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/oocecgnk7bf8kb0/%2528LEAK%2529_RealismCraft_2.1_by_DcaptainPlays.mcpack/file"
     },
     {
         id: "player-animations",
@@ -232,7 +232,7 @@ const allAddons = [
         description: "Player Animations Add-On adds smooth and realistic animations to YOUR world! Enhance your experience with 40+ immersive player animations!",
         image: "https://i.imgur.com/fLe8M0U.png",
         tags: ["Animation", "Player", "Emotes", "Movement", "Realistic", "Gestures", "Actions", "Expressions"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/apaihf580yvxm0t/%2528LEAK%2529_PlayerAnimations_Addon_By_Dcaptain.mcaddon/file"
     },
     {
         id: "RealisticBiome",
@@ -240,7 +240,7 @@ const allAddons = [
         description: "Transform your world with beautiful custom skies, dynamic weather, stunning visual effects, and immersive audio.",
         image: "https://i.imgur.com/gJ2RB6d.jpeg",
         tags: ["Realistic", "Biomes", "Nature", "Environment", "World", "Terrain", "Customisable", "Exploration"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/gy6k0y55i31hz6v/%2528LEAK%2529_Realistic_Biomes_by_DcaptainPlays.mcaddon/file"
     },
     {
         id: "RestaurantSim",
@@ -248,7 +248,7 @@ const allAddons = [
         description: "Run the best restaurant in town in this action-packed minigame! The customers are hungry; prepare and serve the food before time runs out! Can you leave behind a 5-star legacy?",
         image: "https://i.imgur.com/Rqkk6kU.jpeg",
         tags: ["Cooking", "Restaurant", "Chef", "Food", "Simulation", "Job", "Kitchen", "Roleplay"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/nrrj0upfeqpa0y5/%2528LEAK%2529_Restaurant_Sim_By_DcaptainPlays.mcworld/file"
     }
 ];
 
@@ -260,7 +260,7 @@ const featuredAddons = [
         description: "The Animation Pack You Didn't Know You Needed:\nBring your world to life with new animations, particles, textures, and more!",
         image: "https://i.imgur.com/ugi1Tdz.jpeg",
         tags: ["Animation", "Physics", "Combat", "Player", "Particles", "Textures", "Movement"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/k37q493dltmyrzt/%2528LEAK%2529_Actions_And_Stuff_1.6_by_DcaptainPlays.mcpack/file"
     },
     {
         id: "spongebob-addon-pack",
@@ -268,7 +268,7 @@ const featuredAddons = [
         description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on! Includes buildings, mobs, vehicles, weapons, tools, and all of your favorite friends and foes from the SpongeBob universe.",
         image: "https://i.imgur.com/ndfJwRF.jpeg",
         tags: ["Cartoons", "Spongebob", "TV", "Textures", "Animals", "Mobs"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/cvg847ai7vykf7a/%2528LEAK%2529_Spongebob_Addon_By_DcaptainPlays.mcaddon/file"
     },
     {
         id: "demon-slayer-addon",
@@ -276,7 +276,7 @@ const featuredAddons = [
         description: "Experience the world of Demon Slayer in Minecraft — master breathing techniques, wield Nichirin swords, and battle powerful demons with stunning animations and abilities. By Dapy",
         image: "https://i.imgur.com/TBqPiAr.jpeg",
         tags: ["Anime", "Demon", "Slayer", "Weapons", "Breathing", "Swords", "Powers", "Characters"],
-        downloadLink: "#"
+        downloadLink: "https://www.mediafire.com/file/cnq8bwxzd9ah224/%2528NOT_A_LEAK%2529_Mules-Slayer-V1_W_Dapy_for_making_it_Free.mcaddon/file"
     }
 ];
 
