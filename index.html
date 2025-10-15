@@ -1,414 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DcaptainPlays - Minecraft Hub</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DcaptainPlays - Minecraft Hub</title>
+  <link rel="stylesheet" href="style.css" />
 
-    <!-- Open Graph Meta Tags for Link Previews -->
-    <meta property="og:title" content="DcaptainPlays Website">
-    <meta property="og:description" content="Developer and Minecraft addon giver for free. Check out addons, resource packs, and more!">
-    <meta property="og:image" content="https://i.imgur.com/jf3Yme0.png">
-    <meta property="og:url" content="https://DcaptainPlays.github.io/MyLinkWebsite/">
-    <meta property="og:type" content="website">
+  <!-- Open Graph Meta Tags for Link Previews -->
+  <meta property="og:title" content="DcaptainPlays Website">
+  <meta property="og:description" content="Developer and Minecraft addon giver for free. Check out addons, resource packs, clients, and maps!">
+  <meta property="og:image" content="https://i.imgur.com/jf3Yme0.png">
+  <meta property="og:url" content="https://DcaptainPlays.github.io/MyLinkWebsite/">
+  <meta property="og:type" content="website">
 
-    <script>
-        // Prevent split-screen if opened inside Linkvertise frame
-        if (window.top !== window.self) {
-            window.top.location = window.location.href;
-        }
-    </script>
+  <script>
+    // Prevent split-screen if opened inside Linkvertise frame
+    if (window.top !== window.self) {
+      window.top.location = window.location.href;
+    }
+  </script>
 </head>
 <body>
-    <!-- Security Check Loading Screen -->
-    <div id="securityCheck" class="security-screen active">
-        <div class="security-container">
-            <div class="security-logo"></div>
-            <h1>Checking Access...</h1>
-            <p id="securityStatus">Verifying your entry...</p>
-            <div class="loader"></div>
-        </div>
-        <div class="blur-overlay"></div>
+  <!-- Security Check Loading Screen (Home only) -->
+  <div id="securityCheck" class="security-screen active">
+    <div class="security-container">
+      <div class="security-logo"></div>
+      <h1>Checking Access...</h1>
+      <p id="securityStatus">Verifying your entry...</p>
+      <div class="loader"></div>
     </div>
+    <div class="blur-overlay"></div>
+  </div>
 
-    <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="minecraft-block" style="top: 5%; left: 5%; background-image: url('https://i.imgur.com/OqVVUj7.png');"></div>
-        <div class="minecraft-block" style="top: 15%; left: 80%; background-image: url('https://i.imgur.com/OECxW8C.png');"></div>
-        <div class="minecraft-block" style="top: 40%; left: 10%; background-image: url('https://i.imgur.com/s3K9m0J.png');"></div>
-        <div class="minecraft-block" style="top: 60%; left: 85%; background-image: url('https://i.imgur.com/nsP6GXE.png');"></div>
-        <div class="minecraft-block" style="top: 80%; left: 15%; background-image: url('https://i.imgur.com/Jt1511L.png');"></div>
-        <div class="minecraft-block" style="top: 70%; left: 70%; background-image: url('https://i.imgur.com/zIY2LJL.png');"></div>
-        
-        <div class="creeper" style="top: 20%; left: 30%; background-image: url('https://i.imgur.com/nyXNI3s.png');"></div>
-        <div class="creeper" style="top: 50%; left: 60%; background-image: url('https://i.imgur.com/lCkUS8k.png');"></div>
-        <div class="creeper" style="top: 75%; left: 40%; background-image: url('https://i.imgur.com/GQWlGoT.png');"></div>
-        
-        <div class="diamond" style="top: 10%; left: 50%; background-image: url('https://i.imgur.com/iKPlBUI.png');"></div>
-        <div class="diamond" style="top: 35%; left: 75%; background-image: url('https://i.imgur.com/AYxlyid.png');"></div>
-        <div class="diamond" style="top: 65%; left: 25%; background-image: url('https://i.imgur.com/iKPlBUI.png');"></div>
-        <div class="diamond" style="top: 85%; left: 55%; background-image: url('https://i.imgur.com/YMqvA8i.png');"></div>
-        
-        <div class="particle" style="top: 25%; left: 20%;"></div>
-        <div class="particle" style="top: 45%; left: 80%;"></div>
-        <div class="particle" style="top: 70%; left: 50%;"></div>
-        <div class="particle" style="top: 90%; left: 30%;"></div>
-        <div class="particle" style="top: 15%; left: 65%;"></div>
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="minecraft-block" style="top: 5%; left: 5%; background-image: url('https://i.imgur.com/OqVVUj7.png');"></div>
+    <div class="minecraft-block" style="top: 15%; left: 80%; background-image: url('https://i.imgur.com/OECxW8C.png');"></div>
+    <div class="minecraft-block" style="top: 40%; left: 10%; background-image: url('https://i.imgur.com/s3K9m0J.png');"></div>
+    <div class="minecraft-block" style="top: 60%; left: 85%; background-image: url('https://i.imgur.com/nsP6GXE.png');"></div>
+    <div class="minecraft-block" style="top: 80%; left: 15%; background-image: url('https://i.imgur.com/Jt1511L.png');"></div>
+    <div class="minecraft-block" style="top: 70%; left: 70%; background-image: url('https://i.imgur.com/zIY2LJL.png');"></div>
+
+    <div class="creeper" style="top: 20%; left: 30%; background-image: url('https://i.imgur.com/nyXNI3s.png');"></div>
+    <div class="creeper" style="top: 50%; left: 60%; background-image: url('https://i.imgur.com/lCkUS8k.png');"></div>
+    <div class="creeper" style="top: 75%; left: 40%; background-image: url('https://i.imgur.com/GQWlGoT.png');"></div>
+
+    <div class="diamond" style="top: 10%; left: 50%; background-image: url('https://i.imgur.com/iKPlBUI.png');"></div>
+    <div class="diamond" style="top: 35%; left: 75%; background-image: url('https://i.imgur.com/AYxlyid.png');"></div>
+    <div class="diamond" style="top: 65%; left: 25%; background-image: url('https://i.imgur.com/iKPlBUI.png');"></div>
+    <div class="diamond" style="top: 85%; left: 55%; background-image: url('https://i.imgur.com/YMqvA8i.png');"></div>
+
+    <div class="particle" style="top: 25%; left: 20%;"></div>
+    <div class="particle" style="top: 45%; left: 80%;"></div>
+    <div class="particle" style="top: 70%; left: 50%;"></div>
+    <div class="particle" style="top: 90%; left: 30%;"></div>
+    <div class="particle" style="top: 15%; left: 65%;"></div>
+  </div>
+
+  <!-- Main Website Content (Hidden until verified) -->
+  <div id="mainContent" class="hidden">
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+      <div class="container">
+        <div class="profile-section">
+          <div class="profile-pic">
+            <img src="https://i.imgur.com/PK4AHoX.jpeg" alt="DcaptainPlays Profile"/>
+          </div>
+          <h1 class="glitch" data-text="DcaptainPlays">DcaptainPlays</h1>
+          <p class="subtitle">Minecraft Content Creator & Addon Developer From The Philippines</p>
+          <div class="social-links">
+            <span class="tag">Creator</span>
+            <span class="tag">Developer</span>
+            <span class="tag">Gamer</span>
+          </div>
+        </div>
+
+        <div class="button-grid">
+          <a class="main-button" href="socials.html" onclick="playClickSound()">
+            <div class="button-image">
+              <img src="https://i.imgur.com/YHoAhki.png" alt="Socials">
+            </div>
+            <div class="button-content">
+              <h3>Socials</h3>
+              <p>Find me online</p>
+            </div>
+            <div class="button-arrow"></div>
+          </a>
+
+          <a class="main-button" href="downloads.html" onclick="playClickSound()">
+            <div class="button-image">
+              <img src="https://i.imgur.com/q0kFxLH.jpeg" alt="Downloads">
+            </div>
+            <div class="button-content">
+              <h3>Downloads</h3>
+              <p>Get addons, packs, clients, and maps</p>
+            </div>
+            <div class="button-arrow"></div>
+          </a>
+
+          <a class="main-button" href="about.html" onclick="playClickSound()">
+            <div class="button-image">
+              <img src="https://i.imgur.com/1RRh8WX.jpeg" alt="About Me">
+            </div>
+            <div class="button-content">
+              <h3>About Me</h3>
+              <p>Learn more about me</p>
+            </div>
+            <div class="button-arrow"></div>
+          </a>
+
+          <a class="main-button" href="installation.html" onclick="playClickSound()">
+            <div class="button-image">
+              <img src="https://i.imgur.com/avfCN1f.png" alt="Installation Guide">
+            </div>
+            <div class="button-content">
+              <h3>Installation Guide</h3>
+              <p>Learn how to install</p>
+            </div>
+            <div class="button-arrow"></div>
+          </a>
+        </div>
+
+        <!-- News Sections (Featured) -->
+        <div class="news-section">
+          <div class="section-badge new">NEW!!</div>
+          <h2 class="section-title">Latest Addons</h2>
+          <div class="news-grid" id="newAddonsGrid"></div>
+          <a class="see-more-btn" href="addons.html" onclick="playClickSound()">See More Addons</a>
+        </div>
+
+        <div class="news-section">
+          <div class="section-badge">NEW!</div>
+          <h2 class="section-title">Resource Packs</h2>
+          <div class="news-grid" id="newResourcesGrid"></div>
+          <a class="see-more-btn" href="resources.html" onclick="playClickSound()">See More Packs</a>
+        </div>
+
+        <div class="news-section">
+          <div class="section-badge">POPULAR</div>
+          <h2 class="section-title">Hack Clients</h2>
+          <div class="news-grid" id="newClientsGrid"></div>
+          <a class="see-more-btn" href="clients.html" onclick="playClickSound()">See All Clients</a>
+        </div>
+
+        <div class="news-section">
+          <div class="section-badge">UPDATED</div>
+          <h2 class="section-title">Maps</h2>
+          <div class="news-grid" id="newMapsGrid"></div>
+          <a class="see-more-btn" href="maps.html" onclick="playClickSound()">See All Maps</a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="https://i.imgur.com/PK4AHoX.jpeg" alt="Logo">
+            <h3>DcaptainPlays</h3>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="socials.html" onclick="playClickSound()">Socials</a>
+            <a href="downloads.html" onclick="playClickSound()">Downloads</a>
+            <a href="https://youtube.com/@dcaptainplays" target="_blank">YouTube</a>
+          </div>
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <a href="addons.html" onclick="playClickSound()">Addons</a>
+            <a href="resources.html" onclick="playClickSound()">Resource Packs</a>
+            <a href="maps.html" onclick="playClickSound()">Maps</a>
+          </div>
+          <div class="footer-info">
+            <h4>Stay Connected</h4>
+            <p>Follow me for the latest Minecraft content, addons, and updates!</p>
+            <div class="footer-socials">
+              <a href="https://youtube.com/@dcaptainplays" target="_blank">🎥</a>
+              <a href="YOUR_DISCORD_LINK" target="_blank">💬</a>
+              <a href="YOUR_TIKTOK_LINK" target="_blank">🎵</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 DcaptainPlays. All rights reserved. Made with ❤️ for the Minecraft community</p>
+        </div>
+      </footer>
     </div>
+  </div>
 
-    <!-- Main Website Content (Hidden until verified) -->
-    <div id="mainContent" class="hidden">
-        <!-- Home Page -->
-        <div id="homePage" class="page">
-            <div class="container">
-                <div class="profile-section">
-                    <div class="profile-pic">
-                        <img src="https://i.imgur.com/PK4AHoX.jpeg" alt="DcaptainPlays Profile">
-                    </div>
-                    <h1 class="glitch" data-text="DcaptainPlays">DcaptainPlays</h1>
-                    <p class="subtitle">Minecraft Content Creator & Addon Developer From The Philippines</p>
-                    <div class="social-links">
-                        <span class="tag">Creator</span>
-                        <span class="tag">Developer</span>
-                        <span class="tag">Gamer</span>
-                    </div>
-                </div>
+  <script src="main.js"></script>
+  <script>
+    // HOME FEATURED CONTENT (local arrays)
+    const featuredAddons = [
+      {
+        id: "actionsandstuffs-addon",
+        name: "Actions & Stuffs 1.6",
+        description: "The Animation Pack You Didn't Know You Needed:\nBring your world to life with new animations, particles, textures, and more!",
+        image: "https://i.imgur.com/ugi1Tdz.jpeg",
+        tags: ["Animation", "Physics", "Combat", "Player", "Particles", "Textures", "Movement"],
+        downloadLink: "https://www.mediafire.com/file/k37q493dltmyrzt/%2528LEAK%2529_Actions_And_Stuff_1.6_by_DcaptainPlays.mcpack/file"
+      },
+      {
+        id: "spongebob-addon-pack",
+        name: "SpongeBob SquarePants Addon",
+        description: "Are ya ready, kids? Bring SpongeBob and his friends into your worlds with this add-on!",
+        image: "https://i.imgur.com/ndfJwRF.jpeg",
+        tags: ["Cartoons", "Spongebob", "TV", "Textures", "Animals", "Mobs"],
+        downloadLink: "https://www.mediafire.com/file/cvg847ai7vykf7a/%2528LEAK%2529_Spongebob_Addon_By_DcaptainPlays.mcaddon/file"
+      },
+      {
+        id: "demon-slayer-addon",
+        name: "Demon Slayer Addon",
+        description: "Experience the world of Demon Slayer in Minecraft — by Dapy",
+        image: "https://i.imgur.com/TBqPiAr.jpeg",
+        tags: ["Anime", "Demon", "Slayer", "Weapons"],
+        downloadLink: "https://www.mediafire.com/file/cnq8bwxzd9ah224/%2528NOT_A_LEAK%2529_Mules-Slayer-V1_W_Dapy_for_making_it_Free.mcaddon/file"
+      }
+    ];
 
-                <div class="button-grid">
-                    <div class="main-button" onclick="playClickSound(); goToPage('socialsPage')">
-                        <div class="button-image">
-                            <img src="https://i.imgur.com/YHoAhki.png" alt="Socials">
-                        </div>
-                        <div class="button-content">
-                            <h3>Socials</h3>
-                            <p>Find me online</p>
-                        </div>
-                        <div class="button-arrow"></div>
-                    </div>
+    const featuredResources = [
+      {
+        id: "hd-textures",
+        name: "HD Textures Pack",
+        description: "High-definition textures for a better look.",
+        image: "https://i.imgur.com/SBU16HK.jpeg",
+        tags: ["Textures", "HD"],
+        downloadLink: "#"
+      },
+      {
+        id: "pvp-pack",
+        name: "PvP Resource Pack",
+        description: "Optimized textures for PvP gameplay.",
+        image: "https://i.imgur.com/q0kFxLH.jpeg",
+        tags: ["PvP", "Performance"],
+        downloadLink: "#"
+      },
+      {
+        id: "fantasy-theme",
+        name: "Fantasy Theme Pack",
+        description: "Medieval fantasy themed textures.",
+        image: "https://i.imgur.com/YHoAhki.png",
+        tags: ["Fantasy", "Theme"],
+        downloadLink: "#"
+      }
+    ];
 
-                    <div class="main-button" onclick="playClickSound(); goToPage('downloadsPage')">
-                        <div class="button-image">
-                            <img src="https://i.imgur.com/q0kFxLH.jpeg" alt="Downloads">
-                        </div>
-                        <div class="button-content">
-                            <h3>Downloads</h3>
-                            <p>Get addons, packs, and tools</p>
-                        </div>
-                        <div class="button-arrow"></div>
-                    </div>
+    const featuredClients = [
+      {
+        id: "toolbox-pro",
+        name: "Toolbox Pro",
+        description: "Advanced Minecraft client with many features.",
+        image: "https://i.imgur.com/7wpie0Y.jpeg",
+        tags: ["Client", "Tools"],
+        downloadLink: "#"
+      },
+      {
+        id: "hacked-client-x",
+        name: "Hacked Client X",
+        description: "Feature-rich client for advanced users.",
+        image: "https://i.imgur.com/OlYW3ka.png",
+        tags: ["Advanced", "Hacks"],
+        downloadLink: "#"
+      },
+      {
+        id: "mod-menu-plus",
+        name: "Mod Menu Plus",
+        description: "Extensive mod menu with custom features.",
+        image: "https://i.imgur.com/OlYW3ka.png",
+        tags: ["Mods", "Menu"],
+        downloadLink: "#"
+      }
+    ];
 
-                    <div class="main-button" onclick="playClickSound(); goToPage('aboutPage')">
-                        <div class="button-image">
-                            <img src="https://i.imgur.com/1RRh8WX.jpeg" alt="About Me">
-                        </div>
-                        <div class="button-content">
-                            <h3>About Me</h3>
-                            <p>Learn more about me</p>
-                        </div>
-                        <div class="button-arrow"></div>
-                    </div>
+    const featuredMaps = [
+      {
+        id: "restaurant-sim",
+        name: "Restaurant Sim: Head Chef",
+        description: "Run the best restaurant in town in this action-packed minigame!",
+        image: "https://i.imgur.com/Rqkk6kU.jpeg",
+        tags: ["Cooking", "Restaurant", "Minigame"],
+        downloadLink: "https://www.mediafire.com/file/nrrj0upfeqpa0y5/%2528LEAK%2529_Restaurant_Sim_By_DcaptainPlays.mcworld/file"
+      }
+    ];
 
-                    <div class="main-button" onclick="playClickSound(); goToPage('installationPage')">
-                        <div class="button-image">
-                            <img src="https://i.imgur.com/avfCN1f.png" alt="Installation Guide">
-                        </div>
-                        <div class="button-content">
-                            <h3>Installation Guide</h3>
-                            <p>Learn how to install</p>
-                        </div>
-                        <div class="button-arrow"></div>
-                    </div>
-                </div>
-
-                <!-- News Sections -->
-                <div class="news-section">
-                    <div class="section-badge new">NEW!!</div>
-                    <h2 class="section-title">Latest Addons</h2>
-                    <div class="news-grid" id="newAddonsGrid"></div>
-                    <button class="see-more-btn" onclick="playClickSound(); goToPage('addonsPage')">See More Addons</button>
-                </div>
-
-                <div class="news-section">
-                    <div class="section-badge">NEW!</div>
-                    <h2 class="section-title">Resource Packs</h2>
-                    <div class="news-grid" id="newResourcesGrid"></div>
-                    <button class="see-more-btn" onclick="playClickSound(); goToPage('resourcePage')">See More Packs</button>
-                </div>
-
-                <div class="news-section">
-                    <div class="section-badge">POPULAR</div>
-                    <h2 class="section-title">Hack Clients</h2>
-                    <div class="news-grid" id="newClientsGrid"></div>
-                    <button class="see-more-btn" onclick="playClickSound(); goToPage('hackClientPage')">See All Clients</button>
-                </div>
-
-                <div class="news-section">
-                    <div class="section-badge">UPDATED</div>
-                    <h2 class="section-title">Minecraft APKs</h2>
-                    <div class="news-grid" id="newApksGrid"></div>
-                    <button class="see-more-btn" onclick="playClickSound(); goToPage('apkPage')">See All APKs</button>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <img src="https://i.imgur.com/PK4AHoX.jpeg" alt="Logo">
-                        <h3>DcaptainPlays</h3>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Quick Links</h4>
-                        <a href="#" onclick="playClickSound(); goToPage('socialsPage')">Socials</a>
-                        <a href="#" onclick="playClickSound(); goToPage('downloadsPage')">Downloads</a>
-                        <a href="https://youtube.com/@dcaptainplays" target="_blank">YouTube</a>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Resources</h4>
-                        <a href="#" onclick="playClickSound(); goToPage('addonsPage')">Addons</a>
-                        <a href="#" onclick="playClickSound(); goToPage('resourcePage')">Resource Packs</a>
-                        <a href="#" onclick="playClickSound(); goToPage('apkPage')">APKs</a>
-                    </div>
-                    <div class="footer-info">
-                        <h4>Stay Connected</h4>
-                        <p>Follow me for the latest Minecraft content, addons, and updates!</p>
-                        <div class="footer-socials">
-                            <a href="https://youtube.com/@dcaptainplays" target="_blank">🎥</a>
-                            <a href="YOUR_DISCORD_LINK" target="_blank">💬</a>
-                            <a href="YOUR_TIKTOK_LINK" target="_blank">🎵</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>© 2025 DcaptainPlays. All rights reserved. Made with ❤️ for the Minecraft community</p>
-                </div>
-            </footer>
+    function createNewsCard(item) {
+      const card = document.createElement('div');
+      card.className = 'news-card';
+      card.onclick = () => {
+        playClickSound();
+        window.open(item.downloadLink, '_blank');
+      };
+      card.innerHTML = `
+        <div class="news-card-image">
+          <img src="${item.image}" alt="${item.name}">
         </div>
-
-        <!-- About Page -->
-        <div id="aboutPage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToHome()">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>About Me</h1>
-                    <p>Get to know DcaptainPlays</p>
-                </div>
-                <div class="about-section">
-                    <h2>About Me</h2>
-                    <p>Welcome! I'm DcaptainPlays, a passionate Minecraft content creator and addon developer from the Philippines. I create unique addons and share my gameplay experiences on YouTube.</p>
-                    <div class="about-stats">
-                        <div class="stat-box">
-                            <h3>100+</h3>
-                            <p>Addons Created</p>
-                        </div>
-                        <div class="stat-box">
-                            <h3>50K+</h3>
-                            <p>Downloads</p>
-                        </div>
-                        <div class="stat-box">
-                            <h3>3+</h3>
-                            <p>Years Experience</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="news-card-content">
+          <h3>${item.name}</h3>
+          <p>${item.description}</p>
+          <div class="news-card-tags">
+            ${item.tags.map(tag => `<span class="news-card-tag">${tag}</span>`).join('')}
+          </div>
         </div>
+      `;
+      return card;
+    }
 
-        <!-- Socials Page -->
-        <div id="socialsPage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToHome()">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>My Socials</h1>
-                    <p>Connect with me on these platforms</p>
-                </div>
-                <div class="button-grid">
-                    <a href="https://youtube.com/@dcaptainplays" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/YHoAhki.png" alt="YouTube"></div>
-                        <div class="button-content"><h3>YouTube</h3><p>Watch my videos</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                    <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/RfclprT.png" alt="Discord"></div>
-                        <div class="button-content"><h3>Discord</h3><p>Join my community</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                    <a href="YOUR_TIKTOK_LINK" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/glkqEI2.png" alt="TikTok"></div>
-                        <div class="button-content"><h3>TikTok</h3><p>Watch short clips</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
+    function renderFeatured() {
+      const a = document.getElementById('newAddonsGrid');
+      const r = document.getElementById('newResourcesGrid');
+      const c = document.getElementById('newClientsGrid');
+      const m = document.getElementById('newMapsGrid');
+      a.innerHTML = ''; r.innerHTML = ''; c.innerHTML = ''; m.innerHTML = '';
+      featuredAddons.forEach(x => a.appendChild(createNewsCard(x)));
+      featuredResources.forEach(x => r.appendChild(createNewsCard(x)));
+      featuredClients.forEach(x => c.appendChild(createNewsCard(x)));
+      featuredMaps.forEach(x => m.appendChild(createNewsCard(x)));
+    }
 
-        <!-- Installation Guide Page -->
-        <div id="installationPage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToHome()">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>Installation Guide</h1>
-                    <p>Learn how to install addons, resource packs, and more</p>
-                </div>
-                <div class="button-grid">
-                    <a href="YOUR_YOUTUBE_VIDEO_LINK_1" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/q0kFxLH.jpeg" alt="Addons & Resource Packs"></div>
-                        <div class="button-content"><h3>Addons & Resource Packs</h3><p>How to install addons and resource packs</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                    <a href="YOUR_YOUTUBE_VIDEO_LINK_2" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/7wpie0Y.jpeg" alt="Hack Clients & APKs"></div>
-                        <div class="button-content"><h3>Hack Clients & APKs</h3><p>How to install hack clients and APKs</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Downloads Main Page -->
-        <div id="downloadsPage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToHome()">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>Downloads</h1>
-                    <p>Choose what to explore</p>
-                </div>
-                <div class="button-grid">
-                    <div class="main-button" onclick="playClickSound(); goToPage('addonsPage')">
-                        <div class="button-image"><img src="https://i.imgur.com/q0kFxLH.jpeg" alt="Addons"></div>
-                        <div class="button-content"><h3>Addons</h3><p>Download Minecraft addons</p></div>
-                        <div class="button-arrow"></div>
-                    </div>
-                    <div class="main-button" onclick="playClickSound(); goToPage('resourcePage')">
-                        <div class="button-image"><img src="https://i.imgur.com/SBU16HK.jpeg" alt="Resource Packs"></div>
-                        <div class="button-content"><h3>Resource Packs</h3><p>Visual improvements & textures</p></div>
-                        <div class="button-arrow"></div>
-                    </div>
-                    <div class="main-button" onclick="playClickSound(); goToPage('apkPage')">
-                        <div class="button-image"><img src="https://i.imgur.com/r7mwvRI.jpeg" alt="APKs"></div>
-                        <div class="button-content"><h3>APKs</h3><p>Download modified Minecraft APKs</p></div>
-                        <div class="button-arrow"></div>
-                    </div>
-                    <div class="main-button" onclick="playClickSound(); goToPage('hackClientPage')">
-                        <div class="button-image"><img src="https://i.imgur.com/7wpie0Y.jpeg" alt="Hack Clients"></div>
-                        <div class="button-content"><h3>Hack Clients</h3><p>Explore client tools</p></div>
-                        <div class="button-arrow"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Addons Page -->
-        <div id="addonsPage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToPage('downloadsPage')">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>Minecraft Addons</h1>
-                    <p>Choose your favorite addon to download</p>
-                </div>
-                <div class="search-container">
-                    <input type="text" id="searchInput" placeholder="Search addons..." onkeyup="searchAddons()">
-                    <span class="search-icon">🔍</span>
-                </div>
-                <div class="addons-grid" id="addonsGrid"></div>
-                <div class="pagination" id="pagination">
-                    <button class="page-btn" onclick="playClickSound(); goToFirstPage('addons')">«</button>
-                    <button class="page-btn" onclick="playClickSound(); previousPage('addons')">‹</button>
-                    <span id="pageNumbers"></span>
-                    <button class="page-btn" onclick="playClickSound(); nextPage('addons')">›</button>
-                    <button class="page-btn" onclick="playClickSound(); goToLastPage('addons')">»</button>
-                </div>
-                <div class="page-info">
-                    Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resource Pack Page -->
-        <div id="resourcePage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToPage('downloadsPage')">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>Resource Packs</h1>
-                    <p>Choose your favorite pack to download</p>
-                </div>
-                <div class="search-container">
-                    <input type="text" id="resourceSearchInput" placeholder="Search resource packs..." onkeyup="searchResources()">
-                    <span class="search-icon">🔍</span>
-                </div>
-                <div class="addons-grid" id="resourceGrid"></div>
-                <div class="pagination" id="resourcePagination">
-                    <button class="page-btn" onclick="playClickSound(); goToFirstPage('resources')">«</button>
-                    <button class="page-btn" onclick="playClickSound(); previousPage('resources')">‹</button>
-                    <span id="resourcePageNumbers"></span>
-                    <button class="page-btn" onclick="playClickSound(); nextPage('resources')">›</button>
-                    <button class="page-btn" onclick="playClickSound(); goToLastPage('resources')">»</button>
-                </div>
-                <div class="page-info">
-                    Page <span id="resourceCurrentDisplay">1</span> of <span id="resourceTotalDisplay">1</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- APK Page -->
-        <div id="apkPage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToPage('downloadsPage')">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>Minecraft APKs</h1>
-                    <p>Download modified Minecraft APKs</p>
-                </div>
-                <div class="button-grid">
-                    <a href="YOUR_APK_LINK_1" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
-                        <div class="button-content"><h3>Minecraft v1.21</h3><p>Latest stable build</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                    <a href="YOUR_APK_LINK_2" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
-                        <div class="button-content"><h3>Minecraft Modded</h3><p>Performance optimized</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                    <a href="YOUR_APK_LINK_3" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
-                        <div class="button-content"><h3>Minecraft Beta</h3><p>Experimental features</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hack Client Page -->
-        <div id="hackClientPage" class="page">
-            <button class="back-button" onclick="playClickSound(); goToPage('downloadsPage')">← Back</button>
-            <div class="container">
-                <div class="page-header">
-                    <h1>Hack Clients</h1>
-                    <p>Client tools and modified versions</p>
-                </div>
-                <div class="button-grid">
-                    <a href="YOUR_CLIENT_LINK_1" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
-                        <div class="button-content"><h3>Toolbox Pro</h3><p>Feature-rich client</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                    <a href="YOUR_CLIENT_LINK_2" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
-                        <div class="button-content"><h3>Hacked Client X</h3><p>Advanced features</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                    <a href="YOUR_CLIENT_LINK_3" target="_blank" class="main-button" onclick="playClickSound()">
-                        <div class="button-image"><img src="https://i.imgur.com/OlYW3ka.png" alt="Client"></div>
-                        <div class="button-content"><h3>Mod Menu Plus</h3><p>Custom mod support</p></div>
-                        <div class="button-arrow"></div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    // Security gate from original script (simplified into main.js helpers)
+    document.addEventListener('DOMContentLoaded', () => {
+      // Kick security check
+      startSecurityGate({
+        linkvertiseURL: "https://link-hub.net/1408907/57D6CaRirKtJ",
+        validAuth: "dcaptain123",
+        onGranted: () => {
+          document.getElementById('securityCheck').style.display = 'none';
+          document.getElementById('mainContent').classList.remove('hidden');
+          renderFeatured();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
