@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hack Clients - DcaptainPlays</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <a class="back-button" href="index.html" onclick="playClickSound()">← Home</a>
+  <div class="container">
+    <div class="page-header">
+      <h1>Hack Clients</h1>
+      <p>Client tools and modified versions</p>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search clients...">
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="addons-grid" id="grid"></div>
+
+    <div class="pagination" id="pagination">
+      <button class="page-btn" id="firstBtn">«</button>
+      <button class="page-btn" id="prevBtn">‹</button>
+      <span id="pageNumbers"></span>
+      <button class="page-btn" id="nextBtn">›</button>
+      <button class="page-btn" id="lastBtn">»</button>
+    </div>
+
+    <div class="page-info">
+      Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span>
+    </div>
+
+    <div class="news-section" style="margin-top:50px">
+      <div class="section-badge">LEGACY</div>
+      <h2 class="section-title">Old APK Downloads (Moved Here)</h2>
+      <div class="button-grid">
+        <a href="YOUR_APK_LINK_1" target="_blank" class="main-button" onclick="playClickSound()">
+          <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
+          <div class="button-content"><h3>Minecraft v1.21</h3><p>Latest stable build</p></div>
+          <div class="button-arrow"></div>
+        </a>
+        <a href="YOUR_APK_LINK_2" target="_blank" class="main-button" onclick="playClickSound()">
+          <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
+          <div class="button-content"><h3>Minecraft Modded</h3><p>Performance optimized</p></div>
+          <div class="button-arrow"></div>
+        </a>
+        <a href="YOUR_APK_LINK_3" target="_blank" class="main-button" onclick="playClickSound()">
+          <div class="button-image"><img src="https://i.imgur.com/MboC4Fc.png" alt="APK"></div>
+          <div class="button-content"><h3>Minecraft Beta</h3><p>Experimental features</p></div>
+          <div class="button-arrow"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="clients.js"></script>
+</body>
+</html>

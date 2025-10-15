@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Addons - DcaptainPlays</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <a class="back-button" href="index.html" onclick="playClickSound()">← Home</a>
+  <div class="container">
+    <div class="page-header">
+      <h1>Minecraft Addons</h1>
+      <p>Choose your favorite addon to download</p>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search addons...">
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="addons-grid" id="grid"></div>
+
+    <div class="pagination" id="pagination">
+      <button class="page-btn" id="firstBtn">«</button>
+      <button class="page-btn" id="prevBtn">‹</button>
+      <span id="pageNumbers"></span>
+      <button class="page-btn" id="nextBtn">›</button>
+      <button class="page-btn" id="lastBtn">»</button>
+    </div>
+
+    <div class="page-info">
+      Page <span id="currentPageDisplay">1</span> of <span id="totalPagesDisplay">1</span>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="addons.js"></script>
+</body>
+</html>
