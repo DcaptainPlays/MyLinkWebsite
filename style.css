@@ -282,7 +282,10 @@ body::before {
 }
 
 .page-header p {
-    color: #E8E8E8;
+    background: linear-gradient(45deg, #65E065, #A1E861, #D9F76B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-size: 1.2em;
 }
 
@@ -836,6 +839,7 @@ body::before {
     backdrop-filter: blur(6px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
     font-family: 'Courier New', monospace;
+    text-decoration: none;
 }
 
 .back-button:hover {

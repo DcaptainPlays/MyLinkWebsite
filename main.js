@@ -95,6 +95,16 @@ function startSecurityGate({ linkvertiseURL, validAuth, onGranted }) {
   check();
 }
 
+// ==================== BACK BUTTON HANDLER ====================
+function goBack(e) {
+  if (e) e.preventDefault();
+  playClickSound();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => {
+    window.location.href = 'index.html';
+  }, 300);
+}
+
 // ==================== GENERIC GRID RENDERER ====================
 function createCard(item) {
   const card = document.createElement('div');
