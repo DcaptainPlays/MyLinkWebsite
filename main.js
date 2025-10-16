@@ -101,7 +101,13 @@ function goBack(e) {
   playClickSound();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(() => {
-    window.location.href = 'index.html';
+    // Check if there's history to go back to
+    if (document.referrer && document.referrer.includes(window.location.hostname)) {
+      history.back();
+    } else {
+      // If no referrer or external referrer, go to index
+      window.location.href = 'index.html';
+    }
   }, 300);
 }
 
