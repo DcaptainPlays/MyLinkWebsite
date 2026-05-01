@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.header_text {
+    font-size: 3em;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gif_container img {
+    width: 100%; 
+    max-width: 500px; 
+    height: auto; 
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.redirect-message {
+    margin-top: 30px;
+    font-size: 1.2em;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#countdown {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
