@@ -71,7 +71,7 @@
         this.tree = tree;
 
         var scale = scale || 1;
-        var color = color || '#FF0000';
+        var color = color || (window.config ? window.config.heartColor : '#FF0000');
 
         this.heart = {
             point  : point,
@@ -252,7 +252,7 @@
                 figure = this.seed.heart.figure;
             var r = 240, x, y;
             for (var i = 0; i < num; i++) {
-                cache.push(this.createBloom(width, height, r, figure));
+                cache.push(this.createBloom(width, height, r, figure, window.config ? window.config.heartColor : 'rgb(' + random(128, 200) + ',' + random(0, 100) + ',' + random(180, 255) + ')'));
             }
             this.blooms = [];
             this.bloomsCache = cache;
