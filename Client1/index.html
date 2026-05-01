@@ -1,1 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- Floating images container -->
+    <div class="floating-images" id="floatingImages"></div>
+
+    <!-- ========== PAGE 1: ACCESS GATE ========== -->
+    <div id="page1">
+        <h1 id="page1Title">Secure Access 🔐</h1>
+        <p id="page1Description">Enter the access code below to preview the interactive client presentation.</p>
+        <input type="text" id="magicWordInput" placeholder="Enter your access code...">
+        <br>
+        <button id="page1Button" class="btn-enter" onclick="checkMagicWord()">Unlock Access 🔐</button>
+    </div>
+
+    <!-- ========== TIC TAC TOE PAGE ========== -->
+    <div id="ticTacToePage" style="display: none;">
+        <div class="tictactoe-container">
+            <h1 class="tictactoe-title" id="ticTacToeTitle">Client Strategy Challenge 🎯</h1>
+            <p class="tictactoe-subtitle" id="ticTacToeSubtitle">Win the board to unlock the premium section.</p>
+            <div class="container">
+                <div class="box" data-index="0"></div>
+                <div class="box" data-index="1"></div>
+                <div class="box" data-index="2"></div>
+                <div class="box" data-index="3"></div>
+                <div class="box" data-index="4"></div>
+                <div class="box" data-index="5"></div>
+                <div class="box" data-index="6"></div>
+                <div class="box" data-index="7"></div>
+                <div class="box" data-index="8"></div>
+            </div>
+            <p class="status"></p>
+            <button class="restartBtn" id="ticTacToeRestartButton">Restart 🔁</button>
+        </div>
+    </div>
+
+    <!-- ========== PAGE 2: MAIN CONTENT ========== -->
+    <div id="page2">
+        <div class="header">
+            <h1 id="mainHeaderTitle">Client Showcase ✨</h1>
+            <p id="mainHeaderSubtitle">A refined interactive page for presenting professional services and portfolio work.</p>
+        </div>
+
+        <div class="nav-buttons" id="navButtons">
+            <!-- Built dynamically by script.js from config.nav -->
+        </div>
+
+        <!-- Highlights Section -->
+        <div id="loveSection" class="content-section">
+            <h2 class="section-title" id="loveSectionTitle">Feature Highlights ✨</h2>
+            <div class="love-buttons">
+                <button class="love-btn" id="showMessageBtn" onclick="showLoveMessage()">Reveal Message 💌</button>
+            </div>
+            <div id="loveMessage" class="feature-message"></div>
+        </div>
+
+        <!-- Music Section -->
+        <div id="musicSection" class="content-section">
+            <h2 class="section-title" id="musicSectionTitle">Music 🎵</h2>
+            <div id="musicPlayersList">
+                <!-- Built dynamically by script.js from config.music.tracks -->
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div id="gallerySection" class="content-section">
+            <h2 class="section-title" id="gallerySectionTitle">Gallery 🖼️</h2>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+
+        <!-- Notes Section -->
+        <div id="notesSection" class="content-section">
+            <h2 class="section-title" id="notesSectionTitle">Notes 📝</h2>
+            <div class="notes-list" id="notesList"></div>
+        </div>
+
+        <div class="footer" id="footerText">Designed for premium client presentations. 💼✨</div>
+    </div>
+
+    <!-- ========== MODALS (outside all pages so they always show) ========== -->
+
+    <!-- Wrong Code Modal -->
+    <div id="wrongModal" class="modal">
+        <div class="modal-content">
+            <h2 id="wrongTitle">❌ Wrong Access Code</h2>
+            <p id="wrongClue">That's not correct. Try again! ✨</p>
+            <button class="btn-ok" id="wrongModalBtn" onclick="closeModal()">Try Again 🔄</button>
+        </div>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content welcome-modal">
+            <h2 id="welcomeTitle">Welcome Aboard 👋</h2>
+            <p id="welcomeDescription">Your interactive client showcase is ready. Complete the mini-challenge to continue.</p>
+            <button class="btn-ok" id="welcomeButton" onclick="startTicTacToe()">Start the Experience 🚀</button>
+        </div>
+    </div>
+
+    <!-- Win Modal -->
+    <div id="winModal" class="modal">
+        <div class="modal-content welcome-modal">
+            <h2 id="winModalTitle">You Won! 🎉</h2>
+            <p id="winModalMessage">Great work — the premium presentation is now unlocked.</p>
+            <button class="btn-ok" id="winModalButton" onclick="continueToMainPage()">Let's Go ➡️</button>
+        </div>
+    </div>
+
+    <!-- Lose Modal -->
+    <div id="loseModal" class="modal">
+        <div class="modal-content">
+            <h2 id="loseModalTitle">Try Again 😓</h2>
+            <p id="loseModalMessage">Stay focused and try the challenge again to continue.</p>
+            <button class="btn-ok" id="loseModalButton" onclick="restartTicTacToe()">Restart 🔁</button>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal image-modal" onclick="closeImageModal()">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <img id="modalImage" class="modal-image" src="" alt="Full size image">
+        <div id="modalCaption" class="modal-caption"></div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source id="backgroundMusicSrc" src="sounds/background-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+═══════════════════════════════════════════════════════════════════════════
+                    CLIENT SHOWCASE - ACCESS CODE INFO
+═══════════════════════════════════════════════════════════════════════════
+
+📝 CURRENT ACCESS CODE: "Premium"
+   (Case-insensitive - you can type "premium", "PREMIUM", "Premium", etc.)
+
+═══════════════════════════════════════════════════════════════════════════
+                     CONFIGURABLE MESSAGES IN config.js
+═══════════════════════════════════════════════════════════════════════════
+
+✅ ALL messages can now be customized in config.js:
+
+1. ACCESS CODE PAGE (magicWord)
+   - pageTitle
+   - pageDescription
+   - pageButtonText
+   - pagePlaceholder
+   - magicWord (the actual access code)
+
+2. WRONG ACCESS CODE MESSAGES
+   - wrongModalTitle (error header)
+   - wrongClues (array of hints shown on each wrong attempt)
+
+3. WELCOME MODAL (shown after correct code)
+   - welcomeModal.title
+   - welcomeModal.description
+   - welcomeModal.buttonText
+
+4. TIC TAC TOE GAME
+   - ticTacToe.title
+   - ticTacToe.subtitle
+   - ticTacToe.restartText
+   - ticTacToe.winTitle
+   - ticTacToe.winMessage
+   - ticTacToe.winButton
+   - ticTacToe.loseTitle
+   - ticTacToe.loseMessage
+   - ticTacToe.loseButton
+
+5. MAIN PAGE CONTENT
+   - sections.mainHeader
+   - sections.mainSubtext
+   - sections.nav (all navigation labels)
+   - messages.title
+   - messages.buttonText
+   - messages.content
+
+6. FOOTER
+   - footerText
+
+═══════════════════════════════════════════════════════════════════════════
+                            HOW TO CHANGE ACCESS CODE
+═══════════════════════════════════════════════════════════════════════════
+
+1. Open config.js
+2. Find line: magicWord: "Premium",
+3. Change to your desired code, e.g.: magicWord: "MyCode123",
+4. Save the file
+
+The new access code will be active immediately!
+
+═══════════════════════════════════════════════════════════════════════════
+                            DEBUGGING TIPS
+═══════════════════════════════════════════════════════════════════════════
+
+If the access code still doesn't work:
+1. Open browser DevTools (F12)
+2. Go to Console tab
+3. Try entering the access code
+4. Check the console output for debug messages showing what was entered vs expected
+5. Make sure there are no extra spaces or special characters
+
+═══════════════════════════════════════════════════════════════════════════
