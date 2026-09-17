@@ -1,0 +1,145 @@
+using System;
+
+class BankingSystem
+{
+    public static void Run()
+    {
+        bool running = true;
+        double balance;
+        string name = "";
+        balance = 3000;
+
+        Console.WriteLine("---------------------------------------------------");
+        Console.WriteLine("Welcome to the Banking System");
+        bool validName = false;
+        while (!validName)
+        {
+            Console.Write("Enter your name: ");
+            name = Console.ReadLine();
+            bool isNumber = double.TryParse(name, out double nameCheck);
+            if (name == "" || isNumber)
+            {
+                Console.WriteLine("Invalid name. Letters only, please try again.");
+                validName = false;
+            }
+            else
+            {
+                validName = true;
+            }
+        }
+        Console.Clear();
+        Console.WriteLine("---------------------------------------------------");
+        Console.WriteLine("Creating a new account...");
+        Console.WriteLine("Account created successfully.");
+        Console.WriteLine("---------------------------------------------------");
+        int pinAttempts = 0;
+        bool accessGranted = false;
+        while (!accessGranted && pinAttempts < 3)
+        {
+            Console.Write("Enter Pin number to access the account: ");
+            string pin = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("---------------------------------------------------");
+            bool isValidFormat = int.TryParse(pin, out int pinCheck);
+            if (!isValidFormat)
+            {
+                pinAttempts = pinAttempts + 1;
+                Console.WriteLine("Invalid pin format. Numbers only.");
+                Console.WriteLine("Attempts remaining: " + (3 - pinAttempts));
+            }
+            else if (pin != "6767")
+            {
+                pinAttempts = pinAttempts + 1;
+                Console.WriteLine("Incorrect pin number.");
+                Console.WriteLine("Attempts remaining: " + (3 - pinAttempts));
+            }
+            else
+            {
+                accessGranted = true;
+            }
+        }
+
+        if (!accessGranted)
+        {
+            Console.WriteLine("Too many incorrect attempts. Closing the program.");
+            return;
+        }
+
+        Console.Clear();
+        Console.WriteLine("Pin number is correct. You can access your account.");
+
+        while (running)
+        {
+            Console.WriteLine("---------------------------------------------------");
+            Console.WriteLine("Welcome to the Banking System, " + name + "!");
+            Console.WriteLine("B. Check Balance");
+            Console.WriteLine("D. Deposit");
+            Console.WriteLine("W. Withdraw");
+            Console.WriteLine("E. Exit");
+            Console.WriteLine("--------------------------------------------------");
+            Console.Write("Please select an option: ");
+            bool validOption = char.TryParse(Console.ReadLine(), out char option);
+            Console.Clear();
+            Console.WriteLine("---------------------------------------------------");
+            if (!validOption)
+            {
+                Console.WriteLine("Invalid option. Please enter a single letter.");
+                Console.WriteLine("---------------------------------------------------");
+            }
+            else if (option == 'B' || option == 'b')
+            {
+                Console.WriteLine("Hi " + name + "! " + "Your current balance is: " + balance);
+                Console.WriteLine("---------------------------------------------------");
+            }
+            else if (option == 'D' || option == 'd')
+            {
+                Console.Write("Enter amount to deposit: ");
+                bool validDeposit = double.TryParse(Console.ReadLine(), out double depositAmount);
+
+                if (!validDeposit || depositAmount <= 0)
+                {
+                    Console.WriteLine("Invalid deposit amount. Please enter a positive number.");
+                    Console.WriteLine("---------------------------------------------------");
+                }
+                else
+                {
+                    balance = balance + depositAmount;
+                    Console.WriteLine("Deposit successful. New balance: " + balance);
+                    Console.WriteLine("---------------------------------------------------");
+                }
+            }
+            else if (option == 'W' || option == 'w')
+            {
+                Console.Write("Enter amount to withdraw: ");
+                bool validWithdraw = double.TryParse(Console.ReadLine(), out double withdrawAmount);
+
+                if (!validWithdraw || withdrawAmount <= 0)
+                {
+                    Console.WriteLine("Invalid withdrawal amount. Please enter a positive number.");
+                    Console.WriteLine("---------------------------------------------------");
+                }
+                else if (withdrawAmount > balance)
+                {
+                    Console.WriteLine("Insufficient funds. Withdrawal failed.");
+                    Console.WriteLine("---------------------------------------------------");
+                }
+                else
+                {
+                    balance = balance - withdrawAmount;
+                    Console.WriteLine("Withdrawal successful. New balance: " + balance);
+                    Console.WriteLine("---------------------------------------------------");
+                }
+            }
+            else if (option == 'E' || option == 'e')
+            {
+                Console.WriteLine("Exiting the Banking System. Goodbye!");
+                running = false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option. Please try again.");
+                Console.WriteLine("---------------------------------------------------");
+            }
+        }
+    }
+}
